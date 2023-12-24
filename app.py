@@ -44,5 +44,5 @@ if st.button('Let\'s Go!'):
   response = model.generate_content(input)
   end = time.time()
   st.write(input[:100])
-  st.write(response.text)
+  st.write(response.prompt_feedback)
   st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
