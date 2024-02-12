@@ -8,7 +8,7 @@ from langchain_community.document_loaders import UnstructuredFileLoader
 CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 client = OpenAI(api_key=CLIENT_API_KEY)
 
-st.write("Hougang Workshop :sunglasses: Prototyping the next Readhacker")
+st.write("Hougang Workshop :sunglasses: Prototyping the next Readhacker from my Garage")
 
 uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type = "pdf")
 
