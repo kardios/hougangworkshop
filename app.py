@@ -14,7 +14,8 @@ uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type
 
 raw_text = ""
 if uploaded_file is not None:
-  print(uploaded_file)
+  st.write("UPLOADED")
+  st.write(uploaded_file)
   loader = UnstructuredFileLoader(uploaded_file)
   docs = loader.load()
   for doc in docs:
