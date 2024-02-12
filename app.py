@@ -29,7 +29,7 @@ if uploaded_file is not None:
       {"role": "system", "content": "You are an expert at summarizing documents with accuracy and precision."},
       {"role": "user", "content": input},
     ],
-    temperature=0,)
+    temperature=0,
   )
   output_text = response.choices[0].message.content
   end = time.time()
