@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import time
 from openai import OpenAI
-from langchain_community.document_loaders import UnstructuredFileLoader
+from langchain_community.document_loaders import UnstructuredURLLoader
 
 # Retrieve the OpenAI API key from the environment variables
 CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
