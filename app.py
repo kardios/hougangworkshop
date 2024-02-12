@@ -31,6 +31,7 @@ if uploaded_file is not None:
     ],
     temperature=0,
   )
+  
   output_text = response.choices[0].message.content
   end = time.time()
 
