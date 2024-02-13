@@ -9,7 +9,7 @@ CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 client = OpenAI(api_key=CLIENT_API_KEY)
 
 st.title("Hougang Workshop :sunglasses: Prototyping the next Readhacker from my Garage")
-
+st.text("Readhacker - an experimental AI-powered reading and ideation app")
 uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type = "pdf")
 raw_text = ""
 if uploaded_file is not None:
