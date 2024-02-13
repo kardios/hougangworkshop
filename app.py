@@ -24,7 +24,7 @@ if uploaded_file is not None:
   input = instruction + "\n\n" + raw_text
   
   response = client.chat.completions.create(
-    model="", messages=[
+    model="gpt-3.5-turbo-0125", messages=[
         {"role": "system", "content": "You are a diligent and careful intern. You are able to digest articles and essays, and produce quality analysis."},
         {"role": "user", "content": input},
       ],
