@@ -11,12 +11,10 @@ client = OpenAI(api_key=CLIENT_API_KEY)
 st.title("Hougang Workshop :sunglasses: Prototyping the next Readhacker from my Garage")
 st.text("Readhacker - an experimental AI-powered reading and ideation app")
 
-with st.expander("See explanation"):
-    st.write(\"\"\"
-        The chart above shows some numbers I picked for you.
+with st.expander("Expand to read documentation"):
+    st.write("The chart above shows some numbers I picked for you.
         I rolled actual dice for these, so they're *guaranteed* to
-        be random.
-    \"\"\")
+        be random.")
 
 uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type = "pdf")
 raw_text = ""
