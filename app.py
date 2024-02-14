@@ -32,7 +32,7 @@ with st.expander("Click to read documentation"):
 Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
 Option_Action = st.selectbox("What should I do with your input?", ('Condense into key points', 'Shorten into a summary', 'Identify possible biases', 'Seek disagreeing views', 'Find missing angles', 'Discuss broader significance', 'Compare with historical events', 'Customise your own prompt'))
 
-uploaded_file = st.file_uploader("**Upload** a PDF to summarise or analyse:", type = "pdf")
+uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
 raw_text = ""
 if uploaded_file is not None:
   doc_reader = PdfReader(uploaded_file)
