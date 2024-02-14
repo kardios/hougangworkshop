@@ -11,7 +11,7 @@ client = OpenAI(api_key=CLIENT_API_KEY)
 st.write("Readhacker :sunglasses: AI-Powered Reading and Ideation")
 
 with st.expander("Click to expand documentation"):
-    st.write("Readhacker is an *experimental* AI-powered reading and ideation application by **Sherwood Analytica**."
+    st.write("Readhacker is an *experimental* AI-powered reading and ideation application by **Sherwood Analytica**:")
     st.write("- Access cutting-edge GPT-3.5 and GPT-4 large language models")
     st.write("- Upload PDF documents or enter free text for processing")
     st.write("- Generated answers may not always be suitable or accurate")
