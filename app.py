@@ -20,6 +20,7 @@ else:
 st.write("Readhacker :sunglasses: AI-Powered Reading and Ideation")
 
 with st.expander("Click to expand documentation"):
+  st.write("- A experimental app by **Sherwood Analytica**")
   st.write("- Tap cutting-edge GPT-3.5 and GPT-4 models")
   st.write("- Upload PDF or enter free text as input")
   st.write("- Generate summary or do brainstorming") 
