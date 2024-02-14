@@ -8,6 +8,15 @@ from pypdf import PdfReader
 CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 client = OpenAI(api_key=CLIENT_API_KEY)
 
+# Set the initial temperature, model ID and maximum_tokens
+temperature = 0
+if st.toggle("Use GPT-4 Turbo :robot_face: 9x Input, Quality over Speed"):
+  maximum_tokens = 120000
+  model_id = "gpt-4-turbo-preview"
+else:
+  maximum_tokens = 13000
+  model_id = "gpt-3.5-turbo-0125"
+
 st.write("Readhacker :sunglasses: AI-Powered Reading and Ideation")
 
 with st.expander("Click to expand documentation"):
@@ -15,8 +24,8 @@ with st.expander("Click to expand documentation"):
     st.write("- Access cutting-edge GPT-3.5 and GPT-4 AI models")
     st.write("- Upload PDF document or enter free text as input")
     st.write("- Produce summary or brainstorm with the content") 
-    st.write("- GPT-3.5 - up to 10,000 words - prioritise speed") 
-    st.write("- GPT-4 - quality and input length of 90,000 words") 
+    st.write("- GPT-3.5 :computer: up to 10,000 words :computer: prioritise speed") 
+    st.write("- GPT-4 :robot_face: quality and input length of 90,000 words") 
     st.write("- Try reloading the webpage to troubleshoot issues")
     st.write("- **Answers may not always be suitable or accurate**")
     st.write("- **You bear responsibility over how they are used**")
