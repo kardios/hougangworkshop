@@ -29,7 +29,7 @@ with st.expander("Click to expand documentation"):
   st.write("- :blue[**Try reloading webpage to troubleshoot**]")
   st.write("- :red[**Answers may not be suitable or accurate**]")
              
-uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type = "pdf")
+uploaded_file = st.file_uploader("**Upload** a PDF to summarise or analyse:", type = "pdf")
 raw_text = ""
 if uploaded_file is not None:
   doc_reader = PdfReader(uploaded_file)
