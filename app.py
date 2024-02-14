@@ -15,7 +15,7 @@ with st.expander("Click to expand documentation"):
     st.write("- Upload PDF document or enter free text as input")
     st.write("- Produce summary or brainstorm with the content") 
     st.write("- Access cutting-edge GPT-3.5 and GPT-4 AI models")
-    st.write("- Up to 10,000 words (GPT-3.5) and 90,000 words (GPT-4)"
+    st.write("- Up to 10,000 words (GPT-3.5) and 90,000 words (GPT-4)")
     st.write("- Try reloading webpage to troubleshoot problems")
     st.write("- **Answers may not always be suitable or accurate**")
     st.write("- **You bear responsibility over how they are used**")
