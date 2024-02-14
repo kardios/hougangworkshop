@@ -10,7 +10,7 @@ client = OpenAI(api_key=CLIENT_API_KEY)
 
 # Set the initial temperature, model ID and maximum_tokens
 temperature = 0
-if st.toggle("Use GPT-4 Turbo :robot_face: 9x Input, Quality over Speed"):
+if st.toggle("Toggle GPT-4 :robot_face: 9x Input, Quality over Speed"):
   maximum_tokens = 120000
   model_id = "gpt-4-turbo-preview"
 else:
