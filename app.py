@@ -17,7 +17,7 @@ with st.expander("Click to expand documentation"):
     st.write("- Produce summary or brainstorm with the content") 
     st.write("- GPT-3.5 - up to 10,000 words - prioritise speed") 
     st.write("- GPT-4 - quality and input length of 90,000 words") 
-    st.write("- Try reloading the webpage to troubleshoot problems")
+    st.write("- Try reloading the webpage to troubleshoot issues")
     st.write("- **Answers may not always be suitable or accurate**")
     st.write("- **You bear responsibility over how they are used**")
              
