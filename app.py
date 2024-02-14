@@ -20,15 +20,14 @@ else:
 st.write("Readhacker :sunglasses: AI-Powered Reading and Ideation")
 
 with st.expander("Click to expand documentation"):
-    st.write("Readhacker is an *experimental* AI-powered reading and ideation application by **Sherwood Analytica**:")
-    st.write("- Access cutting-edge GPT-3.5 and GPT-4 AI models")
-    st.write("- Upload PDF document or enter free text as input")
-    st.write("- Produce summary or brainstorm with the content") 
-    st.write("- GPT-3.5 :computer: up to 10,000 words :computer: prioritise speed") 
-    st.write("- GPT-4 :robot_face: quality and input length of 90,000 words") 
-    st.write("- Try reloading the webpage to troubleshoot issues")
-    st.write("- :red[**Answers may not always be suitable or accurate**]")
-    st.write("- :red[**You bear responsibility over how they are used**]")
+  st.write("- Tap cutting-edge GPT-3.5 and GPT-4 models")
+  st.write("- Upload PDF  or enter free text as input")
+  st.write("- Summarize or brainstorm with the content") 
+  st.write("- GPT-3.5 :computer: up to 10,000 words") 
+  st.write("- GPT-4 :robot_face: up to 90,000 words") 
+  st.write("- Try reloading webpage to troubleshoot")
+  st.write("- :red[**Answers may not be suitable or accurate**]")
+  st.write("- :red[**You are responsible over how they are used**]")
              
 uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type = "pdf")
 raw_text = ""
