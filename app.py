@@ -20,7 +20,7 @@ else:
   model_id = "gpt-3.5-turbo-0125"
 
 with st.expander("Click to expand documentation"):
-  st.write("- A experimental app by **Sherwood Analytica**")
+  st.write("- Productivity app by **Sherwood Analytica**")
   st.write("- Tap cutting-edge GPT-3.5 and GPT-4 models")
   st.write("- Upload a PDF or enter free text as input")
   st.write("- Generate a summary or analyse the input") 
