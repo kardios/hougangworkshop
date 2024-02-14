@@ -9,7 +9,7 @@ CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 client = OpenAI(api_key=CLIENT_API_KEY)
 
 st.write("Welcome to **Readhacker**")
-st.write("I am your AI-powered reading and ideation assistant")
+st.write("*Your AI-powered reading and ideation assistant*")
 
 # Set the initial temperature, model ID and maximum_tokens
 temperature = 0
