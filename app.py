@@ -21,8 +21,8 @@ st.write("Readhacker :sunglasses: AI-Powered Reading and Ideation")
 
 with st.expander("Click to expand documentation"):
   st.write("- Tap cutting-edge GPT-3.5 and GPT-4 models")
-  st.write("- Upload PDF  or enter free text as input")
-  st.write("- Summarize or brainstorm with the content") 
+  st.write("- Upload PDF or enter free text as input")
+  st.write("- Generate summary or do brainstorming") 
   st.write("- GPT-3.5 Turbo :computer: up to 10,000 words") 
   st.write("- GPT-4 Turbo :robot_face: up to 90,000 words") 
   st.write("- :blue[**Try reloading webpage to troubleshoot**]")
