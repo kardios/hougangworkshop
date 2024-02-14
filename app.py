@@ -26,8 +26,8 @@ with st.expander("Click to expand documentation"):
   st.write("- Generate a summary or analyse the input") 
   st.write("- Default GPT-3.5 :computer: up to 10,000 words") 
   st.write("- Toggle GPT-4 :robot_face: up to 90,000 words") 
-  st.write("- :blue[**Try reloading webpage to troubleshoot**]")
   st.write("- :red[**Answers may not be suitable or accurate**]")
+  st.write("- :blue[**Try reloading webpage to troubleshoot**]")
              
 uploaded_file = st.file_uploader("**Upload** a PDF to summarise or analyse:", type = "pdf")
 raw_text = ""
