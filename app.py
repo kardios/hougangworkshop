@@ -28,7 +28,10 @@ with st.expander("Click to expand documentation"):
   st.write("- Toggle GPT-4 :robot_face: up to 90,000 words") 
   st.write("- :red[**Answers may not be suitable or accurate**]")
   st.write("- :blue[**Try reloading webpage to troubleshoot**]")
-             
+
+Option_Input = st.selectbox("Select input:", ('Upload a pdf','Enter free text'))
+Option_Action = st.selectbox("Select action:", ('Condense the text into bullet points', 'Shorten the text into a summary', 'Identify possible biases in the text', 'Seek views disagreeing with the text', 'Find angles missing from the text', 'Discuss broader significance of the topics', 'Compare the text with historical events', 'Customise your own unique prompt'))
+
 uploaded_file = st.file_uploader("**Upload** a PDF to summarise or analyse:", type = "pdf")
 raw_text = ""
 if uploaded_file is not None:
