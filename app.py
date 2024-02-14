@@ -56,6 +56,7 @@ if uploaded_file is not None:
   end = time.time()
 
   st.write(response.usage)
-  st.write(output_text)
-  st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+  container = st.container(border=True)
+  container.write(output_text)
+  container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
   st.download_button(':scroll:', output_text)
