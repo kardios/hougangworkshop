@@ -24,7 +24,7 @@ with st.expander("Click to read documentation"):
   st.write("- Productivity app by **Sherwood Analytica**")
   st.write("- Tap cutting-edge GPT-3.5 and GPT-4 models")
   st.write("- Upload a PDF or enter free text as input")
-  st.write("- Generate a summary or analyse the input") 
+  st.write("- Generate a summary or analysis of input") 
   st.write("- Default GPT-3.5 :computer: up to 10,000 words") 
   st.write("- Toggle GPT-4 :robot_face: up to 90,000 words") 
   st.write("- :red[**Answers may not be suitable or accurate**]")
