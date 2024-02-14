@@ -8,10 +8,10 @@ from pypdf import PdfReader
 CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 client = OpenAI(api_key=CLIENT_API_KEY)
 
-st.write("Readhacker :sunglasses: AI-Powered Reading and Ideation App")
+st.write("Readhacker :sunglasses: AI-Powered Reading and Ideation")
 
 with st.expander("Click to expand documentation"):
-    st.write("Readhacker is an *experimental* AI-powered reading and ideation app by **Sherwood Analytica**. It makes cutting edge generative AI models accessible for summarizing large PDF documents or brainstorming with them.")
+    st.write("Readhacker is an *experimental* AI-powered reading and ideation application by **Sherwood Analytica**. It makes cutting edge generative AI models accessible for summarizing or brainstorming with large PDF documents.")
 
 uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type = "pdf")
 raw_text = ""
