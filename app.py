@@ -8,10 +8,9 @@ from pypdf import PdfReader
 CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 client = OpenAI(api_key=CLIENT_API_KEY)
 
-st.title("Readhacker :sunglasses: AI-Powered Reading & Ideation App")
-st.text("Readhacker :sunglasses: AI-Powered Reading & Ideation app")
+st.write("Readhacker :sunglasses: AI-Powered Reading and Ideation App")
 
-with st.expander("Expand to read documentation"):
+with st.expander("Click to Expand Documentation"):
     st.write("The chart above shows some numbers I picked for you. I rolled actual dice for these, so they're *guaranteed* to be random.")
 
 uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type = "pdf")
