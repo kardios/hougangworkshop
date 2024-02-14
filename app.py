@@ -12,11 +12,12 @@ st.write("Readhacker :sunglasses: AI-Powered Reading and Ideation")
 
 with st.expander("Click to expand documentation"):
     st.write("Readhacker is an *experimental* AI-powered reading and ideation application by **Sherwood Analytica**:")
+    st.write("- Access cutting-edge GPT-3.5 and GPT-4 AI models")
     st.write("- Upload PDF document or enter free text as input")
     st.write("- Produce summary or brainstorm with the content") 
-    st.write("- Access cutting-edge GPT-3.5 and GPT-4 AI models")
-    st.write("- Up to 10,000 words (GPT-3.5) and 90,000 words (GPT-4)")
-    st.write("- Try reloading webpage to troubleshoot problems")
+    st.write("- GPT-3.5: Up to 10,000 words with speed over quality") 
+    st.write("- GPT-4: Up to 90,000 words with quality over speed") 
+    st.write("- Try reloading the webpage to troubleshoot problems")
     st.write("- **Answers may not always be suitable or accurate**")
     st.write("- **You bear responsibility over how they are used**")
              
