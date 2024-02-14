@@ -8,6 +8,8 @@ from pypdf import PdfReader
 CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 client = OpenAI(api_key=CLIENT_API_KEY)
 
+st.write("**Readhacker** :sunglasses: AI-Powered Reading and Ideation")
+
 # Set the initial temperature, model ID and maximum_tokens
 temperature = 0
 if st.toggle("Toggle GPT-4 :robot_face: 9x Input, Quality over Speed"):
@@ -16,8 +18,6 @@ if st.toggle("Toggle GPT-4 :robot_face: 9x Input, Quality over Speed"):
 else:
   maximum_tokens = 13000
   model_id = "gpt-3.5-turbo-0125"
-
-st.write("Readhacker :sunglasses: AI-Powered Reading and Ideation")
 
 with st.expander("Click to expand documentation"):
   st.write("- A experimental app by **Sherwood Analytica**")
