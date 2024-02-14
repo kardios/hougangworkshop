@@ -3,29 +3,13 @@ import os
 import time
 from openai import OpenAI
 from pypdf import PdfReader
-import pandas as pd
-import numpy as np
-
-df = pd.DataFrame({
-    "col1": np.random.randn(1000) / 50 + 37.76,
-    "col2": np.random.randn(1000) / 50 + -122.4,
-    "col3": np.random.randn(1000) * 100,
-    "col4": np.random.rand(1000, 4).tolist(),
-})
-
-st.map(df,
-    latitude='col1',
-    longitude='col2',
-    size='col3',
-    color='col4')
-
 
 # Retrieve the OpenAI API key from the environment variables
 CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 client = OpenAI(api_key=CLIENT_API_KEY)
 
-st.title("Hougang Workshop :sunglasses: Prototyping the next Readhacker from my Garage")
-st.text("Readhacker - an experimental AI-powered reading and ideation app")
+st.title("Readhacker :sunglasses: AI-Powered Reading & Ideation App")
+st.text("Readhacker :sunglasses: AI-Powered Reading & Ideation app")
 
 with st.expander("Expand to read documentation"):
     st.write("The chart above shows some numbers I picked for you. I rolled actual dice for these, so they're *guaranteed* to be random.")
