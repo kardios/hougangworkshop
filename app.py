@@ -27,8 +27,8 @@ with st.expander("Click to expand documentation"):
     st.write("- GPT-3.5 :computer: up to 10,000 words :computer: prioritise speed") 
     st.write("- GPT-4 :robot_face: quality and input length of 90,000 words") 
     st.write("- Try reloading the webpage to troubleshoot issues")
-    st.write("- **Answers may not always be suitable or accurate**")
-    st.write("- **You bear responsibility over how they are used**")
+    st.write("- :red[**Answers may not always be suitable or accurate**]")
+    st.write("- :red[**You bear responsibility over how they are used**]")
              
 uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type = "pdf")
 raw_text = ""
