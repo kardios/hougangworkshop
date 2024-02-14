@@ -60,5 +60,5 @@ if uploaded_file is not None:
   container.write(Option_Action)
   container.write(output_text)
   container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
-  st.write(response.usage)
+  container.write(response.usage)
   st.snow()
