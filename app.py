@@ -22,7 +22,6 @@ else:
 
 with st.expander("Click to read documentation"):
   st.write("- Productivity app by **Sherwood Analytica**")
-  st.write("- Tap latest GPT-3.5 and GPT-4 AI models")
   st.write("- Upload a PDF or enter free text as input")
   st.write("- Generate a summary or analysis of input") 
   st.write("- Default GPT-3.5 :computer: up to 10,000 words") 
