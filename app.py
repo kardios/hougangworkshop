@@ -21,13 +21,13 @@ else:
   model_id = "gpt-3.5-turbo-0125"
 
 with st.expander("Click to read documentation"):
-  st.write("- Productivity app by **Sherwood Analytica**")
-  st.write("- Upload a PDF or enter free text as input")
-  st.write("- Generate a summary or analysis of input") 
-  st.write("- Default GPT-3.5 :computer: up to 10,000 words") 
-  st.write("- Toggle GPT-4 :robot_face: up to 90,000 words") 
-  st.write("- :red[**Answers may not be suitable or accurate**]")
-  st.write("- :blue[**Try reloading webpage to troubleshoot**]")
+  st.text("- Productivity app by **Sherwood Analytica**")
+  st.text("- Upload a PDF or enter free text as input")
+  st.text("- Generate a summary or analysis of input") 
+  st.text("- Default GPT-3.5 - up to 10,000 words") 
+  st.text("- Toggle GPT-4 - up to 90,000 words") 
+  st.text("- :red[**Answers may not be suitable or accurate**]")
+  st.text("- :blue[**Try reloading webpage to troubleshoot**]")
 
 Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
 Option_Action = st.selectbox("What should I do with your input?", ('Condense into key points', 'Shorten into a summary', 'Identify possible biases', 'Seek disagreeing views', 'Find missing angles', 'Discuss broader significance', 'Compare with historical events', 'Customise your own prompt'))
