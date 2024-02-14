@@ -55,9 +55,9 @@ if uploaded_file is not None:
   output_text = response.choices[0].message.content
   end = time.time()
 
-  st.write(response.usage)
   container = st.container(border=True)
   container.write(Option_Action)
   container.write(output_text)
   container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
-  st.download_button(':scroll:', output_text)
+  st.write(response.usage)
+  st.success('This is a success message!', icon="✅")
