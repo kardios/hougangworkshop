@@ -12,6 +12,8 @@ st.write("Readhacker :sunglasses: AI-Powered Reading and Ideation")
 
 with st.expander("Click to expand documentation"):
     st.write("Readhacker is an *experimental* AI-powered reading and ideation application by **Sherwood Analytica**. It makes cutting edge generative AI models accessible for summarizing or brainstorming with large PDF documents.")
+    st.write("*Answers may not always be suitable or accurate")
+    st.write("*You bear full responsibility over how they are used")
 
 uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type = "pdf")
 raw_text = ""
