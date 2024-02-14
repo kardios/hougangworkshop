@@ -10,8 +10,8 @@ client = OpenAI(api_key=CLIENT_API_KEY)
 
 st.write("Readhacker :sunglasses: AI-Powered Reading and Ideation App")
 
-with st.expander("Click to Expand Documentation"):
-    st.write("The chart above shows some numbers I picked for you. I rolled actual dice for these, so they're *guaranteed* to be random.")
+with st.expander("Click to expand documentation"):
+    st.write("Readhacker is an *experimental* AI-powered reading and ideation app by **Sherwood Analytica**. It makes cutting edge generative AI models accessible for summarizing large PDF documents or brainstorming with them.")
 
 uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type = "pdf")
 raw_text = ""
