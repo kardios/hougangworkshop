@@ -82,3 +82,4 @@ if uploaded_file is not None:
   container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
   container.write(response.usage)
   st.snow()
+  st.download_button(':scroll:', output_text)
