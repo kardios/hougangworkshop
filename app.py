@@ -67,7 +67,7 @@ if uploaded_file is not None:
   
   response = client.chat.completions.create(
     model=model_id, messages=[
-        {"role": "system", "content": "You are my diligent and careful intern. You are able to digest articles and essays, and produce quality summaries and analyses in response to input."},
+        {"role": "system", "content": "You are an expert at summarizing and analysing input."},
         {"role": "user", "content": input},
       ],
       temperature=0,
