@@ -41,13 +41,13 @@ if uploaded_file is not None:
     if text:
       raw_text = raw_text + text + "\n"
 
-  instruction = "Generate a concise and coherent summary of the text below. Include the main ideas and key details. Present your output in bullet points."
+  instruction = ""Generate a concise and coherent summary from the input below. Include the main ideas and key details. Present your output in a clear and organised way, as one single paragraph only.\n\nInput:\n\n""
   start = time.time()
   input = instruction + "\n\n" + raw_text
   
   response = client.chat.completions.create(
     model="gpt-3.5-turbo-0125", messages=[
-        {"role": "system", "content": "You are a diligent and careful intern. You are able to digest articles and essays, and produce quality analysis."},
+        {"role": "system", "content": "You are my diligent and careful intern. You are able to digest articles and essays, and produce quality summaries and analyses in response to input."},
         {"role": "user", "content": input},
       ],
       temperature=0,
