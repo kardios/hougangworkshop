@@ -77,8 +77,8 @@ if uploaded_file is not None:
 
   #st.success('This is a success message!', icon="✅")
   container = st.container(border=True)
-  container.write(Option_Action)
-  container.write(output_text)
-  container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
-  container.write(response.usage)
+  container.text(Option_Action)
+  container.text(output_text)
+  container.text("Time to generate: " + str(round(end-start,2)) + " seconds")
+  container.text(response.usage)
   st.snow()
