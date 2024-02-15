@@ -49,7 +49,7 @@ elif Option_Action == "Compare with historical events":
 elif Option_Action == "Find black swans and grey rhinos":
   instruction = "Generate black swan and grey rhino scenarios from the input. The scenarios should sound plausible and coherent, draw inspiration from actual historical events, and highlight the impact. As I am familiar with the definition of black swans and grey rhinos, there is no need to explain what they are and you can jump straight into the list of scenarios. Present your output in bullet points under the headings Black Swans and Grey Rhinos."
 elif Option_Action == "Generate markdown for mindmap":
-  instruction = "Use the input to generate a mindmap in Markdown format. Present your output as follows:\n\n# Root\n\n## Branch 1\n - Branchlet 1a\n - Branchlet 1b\n\n## Branch 2\n - Branchlet 2a\n - Branchlet 2b\n\n(and so on...)"
+  instruction = "Use the input to generate a mindmap in Markdown format. Present your output as follows:\n\n# (Root)\n\n## (Branch 1)\n - (Branchlet 1a)\n - (Branchlet 1b)\n\n## (Branch 2)\n - (Branchlet 2a)\n - (Branchlet 2b)\n\n(and so on...)"
 elif Option_Action == "Customise your own prompt":
   instruction = st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
 
@@ -66,7 +66,7 @@ if uploaded_file is not None:
   input = instruction + "\n\nInput:\n\n" + raw_text
   
   response = client.chat.completions.create(
-    model="gpt-3.5-turbo-0125", messages=[
+    model=model_id, messages=[
         {"role": "system", "content": "You are my diligent and careful intern. You are able to digest articles and essays, and produce quality summaries and analyses in response to input."},
         {"role": "user", "content": input},
       ],
