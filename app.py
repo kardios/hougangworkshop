@@ -37,11 +37,11 @@ if Option_Action == "Condense into key points":
 elif Option_Action == "Shorten into a summary":
   instruction = "Generate a concise and coherent summary from the input below. Highlight the main ideas and key details. Present your output in a clear and organised way, as one single paragraph only."
 elif Option_Action == "Identify possible biases":
-  instruction = "Highlight any possible biases in the input. Present the output in bullet points."
+  instruction = "Highlight any possible biases in the input."
 elif Option_Action == "Identify disagreeing views":
-  instruction = "Offer perspectives that disagree with the input. Present the output in bullet points."
+  instruction = "Offer perspectives that disagree with the input."
 elif Option_Action == "Identify missing angles":
-  instruction = "Offer perspectives that are missing from the input. Present the output in bullet points."
+  instruction = "Offer perspectives that are missing from the input."
 elif Option_Action == "Discuss broader significance":
   instruction = "Draft a conclusion that highlights the broader significance of the topics in the input. Present the output in a clear and organised way, as one or more paragraphs."
 elif Option_Action == "Compare with historical events":
