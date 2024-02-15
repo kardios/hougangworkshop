@@ -41,7 +41,7 @@ if uploaded_file is not None:
     if text:
       raw_text = raw_text + text + "\n"
 
-  instruction = ""Generate a concise and coherent summary from the input below. Include the main ideas and key details. Present your output in a clear and organised way, as one single paragraph only.\n\nInput:\n\n""
+  instruction = "Generate a concise and coherent summary from the input below. Include the main ideas and key details. Present your output in a clear and organised way, as one single paragraph only.\n\nInput:\n\n""
   start = time.time()
   input = instruction + "\n\n" + raw_text
   
