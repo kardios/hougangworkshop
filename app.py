@@ -63,7 +63,7 @@ elif Option_Input == "Enter free text":
   if st.button("Let\'s Go! :rocket:"):
     raw_text = input_text
 
-if raw_text.strip() != ""
+if raw_text.strip() != "":
   start = time.time()
   input = "Below is the input:\n\n" + raw_text
   response = client.chat.completions.create(
