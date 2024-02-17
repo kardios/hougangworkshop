@@ -75,10 +75,9 @@ if raw_text.strip() != "":
       temperature=0,
     )
   except:
-    st.error('This is an error message!', icon="🚨")
+    st.error(" Input length may be too long.", icon="🚨")
   else:
     end = time.time()
-    st.success('This is a success message!', icon="✅")
     output_text = response.choices[0].message.content
     container = st.container(border=True)
     container.write(Option_Action)
