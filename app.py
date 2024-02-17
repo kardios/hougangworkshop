@@ -33,25 +33,25 @@ Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','E
 Option_Action = st.selectbox("What should I do with your input?", ('Condense into key points', 'Shorten into a summary', 'Identify possible biases', 'Identify disagreeing views', 'Identify missing angles', 'Discuss broader significance', 'Compare with historical events', 'Find black swans and grey rhinos', 'Generate markdown for mindmap', 'Customise your own prompt'))
 
 if Option_Action == "Condense into key points":
-  instruction = "Summarize the input into bullet points. Identify the main ideas and key details, and condense them into concise bullet points. Recognize the overall structure of the text and create bullet points that reflect this structure. The output should be presented in a clear and organized way. Do not start with any titles."
+  instruction = "You are my reading assistant. You will read the input I provide. Summarize the input into bullet points. Identify the main ideas and key details, and condense them into concise bullet points. Recognize the overall structure of the text and create bullet points that reflect this structure. The output should be presented in a clear and organized way. Do not start with any titles."
 elif Option_Action == "Shorten into a summary":
-  instruction = "Generate a concise and coherent summary from the input below. Highlight the main ideas and key details. Present your output in a clear and organised way, as one single paragraph only."
+  instruction = "You are my reading assistant. You will read the input I provide. Generate a concise and coherent summary. Highlight the main ideas and key details. Present your output in a clear and organised way, as one single paragraph only."
 elif Option_Action == "Identify possible biases":
-  instruction = "Highlight any possible biases in the input."
+  instruction = "You are my reading assistant. You will read the input I provide. Highlight any possible biases in the input."
 elif Option_Action == "Identify disagreeing views":
-  instruction = "Offer perspectives that disagree with the input."
+  instruction = "You are my reading assistant. You will read the input I provide. Offer perspectives that disagree with the input."
 elif Option_Action == "Identify missing angles":
-  instruction = "Offer perspectives that are missing from the input."
+  instruction = "You are my reading assistant. You will read the input I provide. Offer perspectives that are missing from the input."
 elif Option_Action == "Discuss broader significance":
-  instruction = "Draft a conclusion that highlights the broader significance of the topics in the input. Present the output in a clear and organised way, as one or more paragraphs."
+  instruction = "You are my reading assistant. You will read the input I provide. Draft a conclusion that highlights the broader significance of the topics in the input. Present the output in a clear and organised way, as one or more paragraphs."
 elif Option_Action == "Compare with historical events":
-  instruction = "Reflect on the input and draw similiarities and differences to historical events in the last century. Present the output in a clear and organised way, as one or more paragraphs."
+  instruction = "You are my reading assistant. You will read the input I provide. Reflect on the input and draw similiarities and differences to historical events in the last century. Present the output in a clear and organised way, as one or more paragraphs."
 elif Option_Action == "Find black swans and grey rhinos":
-  instruction = "Generate black swan and grey rhino scenarios from the input. The scenarios should sound plausible and coherent, draw inspiration from actual historical events, and highlight the impact. As I am familiar with the definition of black swans and grey rhinos, there is no need to explain what they are and you can jump straight into the list of scenarios. Present your output in bullet points under the headings Black Swans and Grey Rhinos."
+  instruction = "You are my reading assistant. You will read the input I provide. Generate black swan and grey rhino scenarios from the input. The scenarios should sound plausible and coherent, draw inspiration from actual historical events, and highlight the impact. As I am familiar with the definition of black swans and grey rhinos, there is no need to explain what they are and you can jump straight into the list of scenarios. Present your output in bullet points under the headings Black Swans and Grey Rhinos."
 elif Option_Action == "Generate markdown for mindmap":
-  instruction = "Use the input to generate a mindmap in Markdown format. Present your output as follows:\n\n# (Root)\n\n## (Branch 1)\n - (Branchlet 1a)\n - (Branchlet 1b)\n\n## (Branch 2)\n - (Branchlet 2a)\n - (Branchlet 2b)\n\n(and so on...)"
+  instruction = "You are my reading assistant. You will read the input I provide. Use the input to generate a mindmap in Markdown format. Present your output as follows:\n\n# (Root)\n\n## (Branch 1)\n - (Branchlet 1a)\n - (Branchlet 1b)\n\n## (Branch 2)\n - (Branchlet 2a)\n - (Branchlet 2b)\n\n(and so on...)"
 elif Option_Action == "Customise your own prompt":
-  instruction = st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
+  instruction = "You are my reading assistant. You will read the input I provide." + st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
 
 uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
 raw_text = ""
@@ -63,11 +63,11 @@ if uploaded_file is not None:
       raw_text = raw_text + text + "\n"
 
   start = time.time()
-  input = instruction + "\n\nInput:\n\n" + raw_text
+  input = "Here is the input:\n\n" + raw_text
   
   response = client.chat.completions.create(
     model=model_id, messages=[
-        {"role": "system", "content": "You are an expert at summarizing and analysing input."},
+        {"role": "system", "content": instruction},
         {"role": "user", "content": input},
       ],
       temperature=0,
