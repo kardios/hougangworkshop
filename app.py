@@ -64,7 +64,7 @@ elif Option_Input == "Enter free text":
 
 if raw_text.strip() != "":
   try:
-    with st.status("Running AI model..."):
+    with st.spinner("Running AI model..."):
       start = time.time()
       input = "Below is the input:\n\n" + raw_text
       response = client.chat.completions.create(
