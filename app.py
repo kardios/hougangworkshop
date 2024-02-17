@@ -5,10 +5,9 @@ from openai import OpenAI
 from pypdf import PdfReader
 
 client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
+
 st.write("**Readhacker**, your AI reading and ideation assistant")
 
-# Set the initial temperature, model ID and maximum_tokens
-temperature = 0
 if st.toggle("Toggle GPT-4 :robot_face: 9x Input, Quality over Speed"):
   maximum_tokens = 120000
   model_id = "gpt-4-turbo-preview"
@@ -26,8 +25,8 @@ with st.expander("Click to read documentation"):
   st.write("- :blue[**Try reloading webpage to troubleshoot**]")
 
 Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
-Option_Action = st.selectbox("What should I do with your input?", ('Condense into key points', 'Shorten into a summary', 'Identify possible biases', 'Identify disagreeing views', 'Identify missing angles', 'Discuss broader significance', 'Compare with historical events', 'Black swans and grey rhinos', 'Generate markdown summary', 'Customise your own prompt'))
 
+Option_Action = st.selectbox("What should I do with your input?", ('Condense into key points', 'Shorten into a summary', 'Identify possible biases', 'Identify disagreeing views', 'Identify missing angles', 'Discuss broader significance', 'Compare with historical events', 'Black swans and grey rhinos', 'Generate markdown summary', 'Customise your own prompt'))
 if Option_Action == "Condense into key points":
   instruction = "You are my reading assistant. You will read the input I provide. Summarize the input into bullet points. Identify the main ideas and key details, and condense them into concise bullet points. Recognize the overall structure of the text and create bullet points that reflect this structure. The output should be presented in a clear and organized way. Do not start with any titles."
 elif Option_Action == "Shorten into a summary":
@@ -77,5 +76,5 @@ if uploaded_file is not None:
   container.write(output_text)
   container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
   container.write(response.usage)
-  st.snow()
+  #st.snow()
   st.download_button(':scroll:', output_text)
