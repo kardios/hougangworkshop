@@ -79,10 +79,9 @@ if raw_text.strip() != "":
     output_text = response.choices[0].message.content
     container = st.container(border=True)
     container.write(Option_Action)
-    if Option_Action == "Generate markdown summary": container.text(output_text)
-    else: container.write(output_text)
+    container.write(output_text)
     container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
     container.write(response.usage)
-    st.download_button(':scroll:', output_text)
+    st.download_button(':floppy_disk:', output_text)
   except:
     st.error(" Input length may be too long.", icon="🚨")
