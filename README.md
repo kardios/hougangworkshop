@@ -32,3 +32,16 @@ git clone <repository-url>
 cd <repository-path>
 pip install -r requirements.txt
 streamlit run app.py
+
+**Secrets** Ensure you have an OpenAI API key set in your environment variables as OPENAI_API_KEY to authenticate requests to OpenAI's API.
+
+## Dependencies
+- Streamlit
+- OpenAI
+- PyPDF
+
+## Contributing
+- Contributions to Readhacker are welcome! Whether it's feature suggestions, bug reports, or code contributions, please feel free to reach out or submit a pull request.
+
+## License
+- Specify your license here or indicate if the project is open-source.
