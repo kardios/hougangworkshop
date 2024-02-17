@@ -64,22 +64,26 @@ elif Option_Input == "Enter free text":
     raw_text = input_text
 
 if raw_text.strip() != "":
-  start = time.time()
-  input = "Below is the input:\n\n" + raw_text
-  response = client.chat.completions.create(
-    model=model_id, messages=[
+  try:
+    start = time.time()
+    input = "Below is the input:\n\n" + raw_text
+    response = client.chat.completions.create(
+      model=model_id, messages=[
         {"role": "system", "content": instruction},
         {"role": "user", "content": input},
       ],
       temperature=0,
     )
-  output_text = response.choices[0].message.content
-  end = time.time()
-  #st.success('This is a success message!', icon="✅")
-  container = st.container(border=True)
-  container.write(Option_Action)
-  container.write(output_text)
-  container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
-  container.write(response.usage)
-  #st.snow()
-  st.download_button(':scroll:', output_text)
+  except:
+    st.error('This is an error message!', icon="🚨")
+  else:
+    end = time.time()
+    st.success('This is a success message!', icon="✅")
+    output_text = response.choices[0].message.content
+    container = st.container(border=True)
+    container.write(Option_Action)
+    container.write(output_text)
+    container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+    container.write(response.usage)
+    st.snow()
+    st.download_button(':scroll:', output_text)
