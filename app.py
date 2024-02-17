@@ -60,7 +60,7 @@ if Option_Input == "Upload a pdf":
 elif Option_Input == "Enter free text":
   raw_text = ""
   input_text = st.text_area("Enter the text you would like me to summarize or analyse and click **Let\'s Go :rocket:**")
-  if st.button(Let\'s Go! :rocket:"):
+  if st.button("Let\'s Go! :rocket:"):
     raw_text = input_text
 
 if raw_text.strip() != ""
