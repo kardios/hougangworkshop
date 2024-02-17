@@ -5,7 +5,6 @@ from openai import OpenAI
 from pypdf import PdfReader
 
 client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
-
 st.write("**Readhacker**, your AI reading and ideation assistant")
 
 if st.toggle("Toggle GPT-4 :robot_face: 9x Input, Quality over Speed"):
