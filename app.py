@@ -76,7 +76,10 @@ if raw_text.strip():
         )
         end = time.time()
         output_text = response.choices[0].message.content
-        st.write(Option_Action + "\n", output_text + "\n", f"Time to generate: {round(end-start, 2)} seconds", "\n", response.usage)
+        st.write(Option_Action)
+        st.write(output_text)
+        st.write(f"Time to generate: {round(end-start, 2)} seconds")
+        st.write(response.usage)
         st.download_button(':scroll:', output_text)
     except Exception as e:
         st.error(f"The input may not too long: {e}", icon="🚨")
