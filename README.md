@@ -23,19 +23,20 @@
 - If choosing to enter text directly, type your content into the provided text area and click **Let's Go! :rocket:** to process.
 - The AI will then analyze your input according to your selected options and display the results within the app.
 
-## Installation
+## API Key
 
-To run Readhacker locally, you'll need Python and Streamlit installed. Clone the repository, install dependencies, and start the Streamlit server:
-
-**Secrets** Ensure you have an OpenAI API key set in your environment variables as OPENAI_API_KEY to authenticate requests to OpenAI's API.
+- Ensure you have an OpenAI API key set in your environment variables as OPENAI_API_KEY to authenticate requests to OpenAI's API.
 
 ## Dependencies
+
 - Streamlit
 - OpenAI
 - PyPDF
 
 ## Contributing
+
 - Contributions to Readhacker are welcome! Whether it's feature suggestions, bug reports, or code contributions, please feel free to reach out or submit a pull request.
 
 ## License
-- Specify your license here or indicate if the project is open-source.
+
+- This project is open-source.
