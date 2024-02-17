@@ -48,18 +48,24 @@ elif Option_Action == "Generate markdown summary":
 elif Option_Action == "Customise your own prompt":
   instruction = "You are my reading assistant. You will read the input I provide." + st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
 
-uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
-raw_text = ""
-if uploaded_file is not None:
-  doc_reader = PdfReader(uploaded_file)
-  for i, page in enumerate(doc_reader.pages):
-    text = page.extract_text()
-    if text:
-      raw_text = raw_text + text + "\n"
+if Option_Input == "Upload a pdf":
+  uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
+  raw_text = ""
+  if uploaded_file is not None:
+    doc_reader = PdfReader(uploaded_file)
+    for i, page in enumerate(doc_reader.pages):
+      text = page.extract_text()
+      if text:
+        raw_text = raw_text + text + "\n"
+elif Option_Input == "Enter free text":
+  raw_text = ""
+  input_text = st.text_area("Enter the text you would like me to summarize or analyse and click **Let\'s Go :rocket:**")
+  if st.button(Let\'s Go! :rocket:"):
+    raw_text = input_text
 
+if raw_text.strip() != ""
   start = time.time()
   input = "Below is the input:\n\n" + raw_text
-  
   response = client.chat.completions.create(
     model=model_id, messages=[
         {"role": "system", "content": instruction},
@@ -69,7 +75,6 @@ if uploaded_file is not None:
     )
   output_text = response.choices[0].message.content
   end = time.time()
-
   #st.success('This is a success message!', icon="✅")
   container = st.container(border=True)
   container.write(Option_Action)
