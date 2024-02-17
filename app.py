@@ -73,9 +73,6 @@ if raw_text.strip() != "":
       ],
       temperature=0,
     )
-  except:
-    st.error(" Input length may be too long.", icon="🚨")
-  else:
     end = time.time()
     output_text = response.choices[0].message.content
     container = st.container(border=True)
@@ -84,3 +81,5 @@ if raw_text.strip() != "":
     container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
     container.write(response.usage)
     st.download_button(':scroll:', output_text)
+  except:
+    st.error(" Input length may be too long.", icon="🚨")
