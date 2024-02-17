@@ -34,13 +34,20 @@ Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf', '
 # Function to get instructions based on action
 def get_instruction(action):
     instructions = {
-        "Condense into key points": "...",
-        # Add other actions here following the same pattern
-        # Use full instructions as in your original code
+        "Condense into key points": "Summarize the input into bullet points. Identify the main ideas and key details, and condense them into concise bullet points. Recognize the overall structure of the text and create bullet points that reflect this structure. The output should be presented in a clear and organized way. Do not start with any titles.",
+        "Shorten into a summary": "Generate a concise and coherent summary. Highlight the main ideas and key details. Present your output in a clear and organised way, as one single paragraph only.",
+        "Identify possible biases": "Highlight any possible biases in the input.",
+        "Identify disagreeing views": "Offer perspectives that disagree with the input.",
+        "Identify missing angles": "Offer perspectives that are missing from the input.",
+        "Discuss broader significance": "Draft a conclusion that highlights the broader significance of the topics in the input. Present the output in a clear and organised way, as one or more paragraphs.",
+        "Compare with historical events": "Reflect on the input and draw similiarities and differences to historical events in the last century. Present the output in a clear and organised way, as one or more paragraphs.",
+        "Black swans and grey rhinos": "Generate black swan and grey rhino scenarios from the input. The scenarios should sound plausible and coherent, draw inspiration from actual historical events, and highlight the impact. As I am familiar with the definition of black swans and grey rhinos, there is no need to explain what they are and you can jump straight into the list of scenarios. Present your output in bullet points under the headings Black Swans and Grey Rhinos.",
+        "Generate markdown summary": "Use the input to generate a mindmap in Markdown format. Present your output as follows:\n\n# (Root)\n\n## (Branch 1)\n - (Branchlet 1a)\n - (Branchlet 1b)\n\n## (Branch 2)\n - (Branchlet 2a)\n - (Branchlet 2b)\n\n(and so on...)".
+        "Customise your own prompt": "",
     }
-    return instructions.get(action, "You are my reading assistant. You will read the input I provide.")
+    return "You are my reading assistant. You will read the input I provide." + instructions.get(action)
 
-Option_Action = st.selectbox("What should I do with your input?", [...])  # List all options
+Option_Action = st.selectbox("What should I do with your input?", ('Condense into key points', 'Shorten into a summary', 'Identify possible biases', 'Identify disagreeing views', 'Identify missing angles', 'Discuss broader significance', 'Compare with historical events', 'Black swans and grey rhinos', 'Generate markdown summary', 'Customise your own prompt'))  # List all options
 instruction = get_instruction(Option_Action)
 
 # Custom prompt input
