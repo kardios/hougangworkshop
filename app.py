@@ -64,16 +64,17 @@ elif Option_Input == "Enter free text":
 
 if raw_text.strip() != "":
   try:
-    start = time.time()
-    input = "Below is the input:\n\n" + raw_text
-    response = client.chat.completions.create(
-      model=model_id, messages=[
-        {"role": "system", "content": instruction},
-        {"role": "user", "content": input},
-      ],
-      temperature=0,
-    )
-    end = time.time()
+    with st.status("Running AI model..."):
+      start = time.time()
+      input = "Below is the input:\n\n" + raw_text
+      response = client.chat.completions.create(
+        model=model_id, messages=[
+          {"role": "system", "content": instruction},
+          {"role": "user", "content": input},
+        ],
+        temperature=0,
+      )
+      end = time.time()
     output_text = response.choices[0].message.content
     container = st.container(border=True)
     container.write(Option_Action)
