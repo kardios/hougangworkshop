@@ -82,6 +82,6 @@ if raw_text.strip() != "":
     container.write(output_text)
     container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
     container.write(response.usage)
-    st.download_button(':floppy_disk:', output_text)
+    if st.download_button(':floppy_disk:', output_text): st.rerun()
   except:
     st.error(" Input length may be too long.", icon="🚨")
