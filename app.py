@@ -63,7 +63,7 @@ if uploaded_file is not None:
       raw_text = raw_text + text + "\n"
 
   start = time.time()
-  input = "Here is the input:\n\n" + raw_text
+  input = "Below is the input:\n\n" + raw_text
   
   response = client.chat.completions.create(
     model=model_id, messages=[
