@@ -27,12 +27,6 @@
 
 To run Readhacker locally, you'll need Python and Streamlit installed. Clone the repository, install dependencies, and start the Streamlit server:
 
-```bash
-git clone <repository-url>
-cd <repository-path>
-pip install -r requirements.txt
-streamlit run app.py
-
 **Secrets** Ensure you have an OpenAI API key set in your environment variables as OPENAI_API_KEY to authenticate requests to OpenAI's API.
 
 ## Dependencies
