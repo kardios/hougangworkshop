@@ -4,11 +4,8 @@ import time
 from openai import OpenAI
 from pypdf import PdfReader
 
-#CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
-
-st.write("Welcome to **Readhacker**")
-st.write("*Your AI-Powered reading and ideation assistant*")
+st.write("**Readhacker**" :sunglasses: AI-powered reading and ideation assistant")
 
 # Set the initial temperature, model ID and maximum_tokens
 temperature = 0
