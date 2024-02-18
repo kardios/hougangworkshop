@@ -32,11 +32,11 @@ if Option_Action == "Condense into key points":
 elif Option_Action == "Shorten into a summary":
   instruction = "You are my reading assistant. You will read the input I provide. Generate a concise and coherent summary. Identify the main ideas and key details. Present your output in a clear and organised way, as one single paragraph only."
 elif Option_Action == "Identify possible biases":
-  instruction = "You are my reading assistant. You will read the input I provide. Generate a list of possible biases in the input."
+  instruction = "You are my reading assistant. You will read the input I provide. Highlight any possible biases in the input in a clear and organised way, as one or more paragraphs."
 elif Option_Action == "Identify disagreeing views":
-  instruction = "You are my reading assistant. You will read the input I provide. Offer perspectives that disagree with the input."
+  instruction = "You are my reading assistant. You will read the input I provide. Offer perspectives that disagree with the input in a clear and organised way, as one or more paragraphs."
 elif Option_Action == "Identify missing angles":
-  instruction = "You are my reading assistant. You will read the input I provide. Offer perspectives that are missing from the input."
+  instruction = "You are my reading assistant. You will read the input I provide. Offer perspectives that are missing from the input in a clear and organised way, as one or more paragraphs."
 elif Option_Action == "Discuss broader significance":
   instruction = "You are my reading assistant. You will read the input I provide. Draft a conclusion that highlights the broader significance of the topics in the input. Present the output in a clear and organised way, as one or more paragraphs."
 elif Option_Action == "Compare with historical events":
