@@ -30,9 +30,9 @@ Option_Action = st.selectbox("What should I do with your input?", ('Condense int
 if Option_Action == "Condense into key points":
   instruction = "You are my reading assistant. You will read the input I provide. Summarize the input into bullet points. Identify the main ideas and key details, and condense them into concise bullet points. Recognize the overall structure of the text and create bullet points that reflect this structure. The output should be presented in a clear and organized way. Do not start with any titles."
 elif Option_Action == "Shorten into a summary":
-  instruction = "You are my reading assistant. You will read the input I provide. Generate a concise and coherent summary. Highlight the main ideas and key details. Present your output in a clear and organised way, as one single paragraph only."
+  instruction = "You are my reading assistant. You will read the input I provide. Generate a concise and coherent summary. Identify the main ideas and key details. Present your output in a clear and organised way, as one single paragraph only."
 elif Option_Action == "Identify possible biases":
-  instruction = "You are my reading assistant. You will read the input I provide. Highlight any possible biases in the input."
+  instruction = "You are my reading assistant. You will read the input I provide. Generate a list of possible biases in the input."
 elif Option_Action == "Identify disagreeing views":
   instruction = "You are my reading assistant. You will read the input I provide. Offer perspectives that disagree with the input."
 elif Option_Action == "Identify missing angles":
