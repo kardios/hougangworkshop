@@ -15,7 +15,7 @@ with st.expander("Click to read documentation"):
   st.write("- Productivity app by **Sherwood Analytica**")
   st.write("- Upload a PDF or enter free text as input")
   st.write("- Generate a summary or analysis of input") 
-  st.write("- GPT-4-Turbo :robot_face: up to 90,000 words") 
+  st.write("- Uses GPT-4-Turbo :robot_face: up to 90,000 words") 
   st.write("- :red[**Answers may not be suitable or accurate**]")
   st.write("- :blue[**Try reloading webpage to troubleshoot**]")
 
