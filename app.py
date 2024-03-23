@@ -21,7 +21,7 @@ with st.expander("Click to read documentation"):
 
 Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
 
-Option_Action = st.selectbox("What should I do with your input?", ('Shorten into a summary', 'Condense into key points', 'Identify possible biases', 'Identify disagreeing views', 'Identify missing angles', 'Discuss broader significance', 'Compare with historical events', 'Black swans and grey rhinos', 'Generate markdown summary', 'Customise your own prompt'))
+Option_Action = st.selectbox("What should I do with your input?", ('Shorten into a summary', 'Condense into key points', 'Identify possible biases', 'Identify disagreeing views', 'Identify missing angles', 'Create alternative mental models', 'Discuss broader significance', 'Compare with historical events', 'Black swans and grey rhinos', 'Generate markdown summary', 'Customise your own prompt'))
 if Option_Action == "Shorten into a summary":
   instruction = "You are my reading assistant. You will read the input I provide. Generate a concise and coherent summary. Identify the main ideas and key details. Present your output in a clear and organised way, as one single paragraph only."
 elif Option_Action == "Condense into key points":
@@ -32,6 +32,8 @@ elif Option_Action == "Identify disagreeing views":
   instruction = "You are my reading assistant. You will read the input I provide. Offer perspectives that disagree with the input in a clear and organised way, as one or more paragraphs."
 elif Option_Action == "Identify missing angles":
   instruction = "You are my reading assistant. You will read the input I provide. Offer perspectives that are missing from the input in a clear and organised way, as one or more paragraphs."
+elif Option_Action == "Create alternative mental models":
+  instruction = "You are my reading assistant. You will read the input I provide. Generate three alternative mental models to consider the topics in the input in a clear and organised way."
 elif Option_Action == "Discuss broader significance":
   instruction = "You are my reading assistant. You will read the input I provide. Draft a conclusion that highlights the broader significance of the topics in the input. Present the output in a clear and organised way, as one or more paragraphs."
 elif Option_Action == "Compare with historical events":
