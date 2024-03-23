@@ -4,7 +4,7 @@
 
 ## Features
 
-- **Multiple GPT Models Support:** Choose between GPT-3.5 and GPT-4 models to balance between quality and speed.
+- **GPT-4-Turbo Model:** Cutting edge LLM to ensure quality output.
 - **Document Upload:** Easily upload PDFs for analysis.
 - **Text Input:** Enter text directly into the app for quick insights.
 - **Comprehensive Analysis Options:** From summarization to identifying biases and beyond, Readhacker offers a wide range of analysis tools.
@@ -12,10 +12,9 @@
 
 ## Getting Started
 
-1. **Toggle GPT Model:** Use the toggle switch at the top to select between GPT-3.5 and GPT-4 models based on your preference for speed or depth of analysis.
-2. **Input Selection:** Choose how to provide your input—upload a PDF or enter text directly.
-3. **Choose Action:** Select what Readhacker should do with your input, from summarizing to generating markdown summaries and more.
-4. **Custom Prompts (Optional):** Customize your own prompt for unique analysis needs.
+1. **Input Selection:** Choose how to provide your input—upload a PDF or enter text directly.
+2. **Choose Action:** Select what Readhacker should do with your input, from summarizing to generating markdown summaries and more.
+3. **Custom Prompts (Optional):** Customize your own prompt for unique analysis needs.
 
 ## Usage Instructions
 
