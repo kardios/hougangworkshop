@@ -8,19 +8,14 @@ client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
 st.set_page_config(page_title="Readhacker", page_icon=":sunglasses:",)
 st.write("**Readhacker**, your AI reading and ideation assistant")
 
-if st.toggle("Toggle GPT-4 :robot_face: 9x Input, Quality over Speed"):
-  maximum_tokens = 120000
-  model_id = "gpt-4-turbo-preview"
-else:
-  maximum_tokens = 13000
-  model_id = "gpt-3.5-turbo-0125"
+maximum_tokens = 120000
+model_id = "gpt-4-turbo-preview"
 
 with st.expander("Click to read documentation"):
   st.write("- Productivity app by **Sherwood Analytica**")
   st.write("- Upload a PDF or enter free text as input")
   st.write("- Generate a summary or analysis of input") 
-  st.write("- Default GPT-3.5 :computer: up to 10,000 words") 
-  st.write("- Toggle GPT-4 :robot_face: up to 90,000 words") 
+  st.write("- GPT-4-Turbo :robot_face: up to 90,000 words") 
   st.write("- :red[**Answers may not be suitable or accurate**]")
   st.write("- :blue[**Try reloading webpage to troubleshoot**]")
 
