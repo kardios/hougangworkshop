@@ -80,5 +80,12 @@ if raw_text.strip() != "":
     container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
     container.write(response.usage)
     st.download_button(':floppy_disk:', output_text)
+    if st.button(':speech_balloon:'):
+      output_audio = client.audio.speech.create(
+        model = "tts-1-hd",
+        voice = "alloy",
+        input = output_text,
+      )
+      st.audio(output_audio, format="audio/mp3")
   except:
     st.error(" Input length may be too long.", icon="🚨")
