@@ -9,7 +9,7 @@ st.set_page_config(page_title="Readhacker", page_icon=":sunglasses:",)
 st.write("**Readhacker**, your AI reading and ideation assistant")
 
 maximum_tokens = 120000
-model_id = "gpt-4-turbo-preview"
+model_id = "gpt-4-turbo"
 
 with st.expander("Click to read documentation"):
   st.write("- Productivity app by **Sherwood Analytica**")
