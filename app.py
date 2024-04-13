@@ -90,4 +90,4 @@ if raw_text.strip() != "":
         )
       st.audio(tts_response.content, format="audio/mpeg")
   except:
-    #st.error(" Input length may be too long.", icon="🚨")
+    st.error(" Input length may be too long.", icon="🚨")
