@@ -90,7 +90,7 @@ if raw_text.strip() != "":
           input = output_text,
         )
         end = time.time()
-        write("Time to generate: " + str(round(end-start,2)) + " seconds")
+        st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
         st.audio(tts_response.content, format="audio/mpeg")
   except:
     st.error(" Input length may be too long.", icon="🚨")
