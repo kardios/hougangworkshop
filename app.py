@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import io
 import time
 from openai import OpenAI
 from pypdf import PdfReader
@@ -81,11 +82,12 @@ if raw_text.strip() != "":
     container.write(response.usage)
     st.download_button(':floppy_disk:', output_text)
     if st.button(':speech_balloon:'):
-      output_audio = client.audio.speech.create(
+      tts_response = client.audio.speech.create(
         model = "tts-1-hd",
         voice = "alloy",
         input = output_text,
       )
-      st.audio(output_audio.content, format="audio/mp3")
+      output_audio = io.BytesIO(tts_response.content)
+      st.audio(output_audio, format="audio/mp3")
   except:
     st.error(" Input length may be too long.", icon="🚨")
