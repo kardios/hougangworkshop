@@ -62,7 +62,7 @@ elif Option_Input == "Enter free text":
     raw_text = input_text
 
 if raw_text.strip() != "":
-  try:
+  #try:
     with st.spinner("Running AI model..."):
       start = time.time()
       input = "Below is the input:\n\n" + raw_text
@@ -83,12 +83,12 @@ if raw_text.strip() != "":
     st.download_button(':floppy_disk:', output_text)
     if st.button(':speech_balloon:'):
       tts_response = client.audio.speech.create(
-        model = "tts-1-hd",
+        model = "tts-1",
         voice = "alloy",
         input = output_text,
       )
       st.write(tts_response.content)
       #output_audio = io.BytesIO(tts_response.content)
       #st.audio(tts_response.content, format="audio/mpeg")
-  except:
-    st.error(" Input length may be too long.", icon="🚨")
+  #except:
+    #st.error(" Input length may be too long.", icon="🚨")
