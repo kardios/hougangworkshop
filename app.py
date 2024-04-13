@@ -86,6 +86,6 @@ if raw_text.strip() != "":
         voice = "alloy",
         input = output_text,
       )
-      st.audio(output_audio, format="audio/mp3")
+      st.audio(output_audio.content, format="audio/mp3")
   except:
     st.error(" Input length may be too long.", icon="🚨")
