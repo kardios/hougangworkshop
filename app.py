@@ -84,7 +84,7 @@ if raw_text.strip() != "":
     if st.button(':speech_balloon:'):
       with st.spinner("Running AI model for audio generation..."):
         tts_response = client.audio.speech.create(
-          model = "tts-1",
+          model = "tts-1-hd",
           voice = "onyx",
           input = output_text,
         )
