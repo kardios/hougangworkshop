@@ -83,11 +83,14 @@ if raw_text.strip() != "":
     st.download_button(':floppy_disk:', output_text)
     if st.button(':speech_balloon:'):
       with st.spinner("Running AI model for audio generation..."):
+        start = time.time()
         tts_response = client.audio.speech.create(
           model = "tts-1-hd",
-          voice = "onyx",
+          voice = "alloy",
           input = output_text,
         )
-      st.audio(tts_response.content, format="audio/mpeg")
+        end = time.time()
+        write("Time to generate: " + str(round(end-start,2)) + " seconds")
+        st.audio(tts_response.content, format="audio/mpeg")
   except:
     st.error(" Input length may be too long.", icon="🚨")
