@@ -88,6 +88,7 @@ if raw_text.strip() != "":
         input = output_text,
       )
       output_audio = io.BytesIO(tts_response.content)
+      st.write("We Got This Far...")
       st.audio(output_audio, format="audio/mpeg")
   except:
     st.error(" Input length may be too long.", icon="🚨")
