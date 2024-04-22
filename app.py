@@ -6,6 +6,10 @@ import time
 from openai import OpenAI
 from pypdf import PdfReader
 
+recipient_user_id = os.enviro['RECIPIENT_USER_ID']
+bot_token = os.environ['BOT_TOKEN'])
+bot = telebot.TeleBot(BOT_TOKEN)
+
 client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
 st.set_page_config(page_title="Readhacker", page_icon=":sunglasses:",)
 st.write("**Readhacker**, your AI reading and ideation assistant")
@@ -82,6 +86,8 @@ if raw_text.strip() != "":
     container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
     container.write(response.usage)
     st.download_button(':floppy_disk:', output_text)
+    if st.button(':fax:'):
+      bot.send_message(chat_id=recipient_user_id, text=output_text)
     if st.button(':speech_balloon:'):
       with st.spinner("Running AI model for audio generation..."):
         start = time.time()
