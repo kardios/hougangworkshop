@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import telebot
 import io
 import time
 from openai import OpenAI
