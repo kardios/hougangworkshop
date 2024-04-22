@@ -6,7 +6,7 @@ import time
 from openai import OpenAI
 from pypdf import PdfReader
 
-recipient_user_id = os.enviro['RECIPIENT_USER_ID']
+recipient_user_id = os.environ['RECIPIENT_USER_ID']
 bot_token = os.environ['BOT_TOKEN']
 bot = telebot.TeleBot(bot_token)
 
