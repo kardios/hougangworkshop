@@ -8,7 +8,7 @@ from pypdf import PdfReader
 
 recipient_user_id = os.enviro['RECIPIENT_USER_ID']
 bot_token = os.environ['BOT_TOKEN'])
-bot = telebot.TeleBot(BOT_TOKEN)
+bot = telebot.TeleBot(bot_token)
 
 client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
 st.set_page_config(page_title="Readhacker", page_icon=":sunglasses:",)
