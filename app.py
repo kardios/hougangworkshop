@@ -90,9 +90,8 @@ if raw_text.strip() != "":
     container.write(output_text)
     container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
     container.write(response.usage)
-    file = open('output.txt','a')
-    file.write(output_text)
-    file.close()
+    with open('readme.txt', 'a') as f:
+      f.write(output_text)
     st.download_button(':floppy_disk:', output_text)
     if st.button(':fax:'):
       bot.send_message(chat_id=recipient_user_id, text=output_text)
