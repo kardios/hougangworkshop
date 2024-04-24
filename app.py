@@ -14,6 +14,11 @@ client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
 st.set_page_config(page_title="Readhacker", page_icon=":sunglasses:",)
 st.write("**Readhacker**, your AI reading and ideation assistant")
 
+file = open('text.txt','r')
+content = file.read()
+file.close()
+st.write(content)
+
 maximum_tokens = 120000
 model_id = "gpt-4-turbo"
 
