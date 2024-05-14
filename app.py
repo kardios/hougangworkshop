@@ -20,7 +20,8 @@ file.close()
 st.write(content)
 
 maximum_tokens = 120000
-model_id = "gpt-4-turbo"
+model_id = "gpt-4o"
+#model_id = "gpt-4-turbo"
 
 with st.expander("Click to read documentation"):
   st.write("- Productivity app by **Sherwood Analytica**")
