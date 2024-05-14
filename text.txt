@@ -1,1 +1,1 @@
-This text comes from the Github repository!
+Greetings from the Github repository!
