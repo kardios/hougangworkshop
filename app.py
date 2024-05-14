@@ -23,6 +23,8 @@ maximum_tokens = 120000
 model_id = "gpt-4o"
 #model_id = "gpt-4-turbo"
 
+st.write("Uses", model_id)
+
 with st.expander("Click to read documentation"):
   st.write("- Productivity app by **Sherwood Analytica**")
   st.write("- Upload a PDF or enter free text as input")
