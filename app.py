@@ -154,7 +154,8 @@ if raw_text.strip() != "":
                     {"role": "assistant", "content": output_text},
                     {"role": "user", "content": "Review your answer and produce a revised version. Think step by step."}])
         improved_output_text = message.content[0].text
-  
+        st.write(improved_output_text)
+      
       elif Model_Option == "GPT-4 Omni":
         response = client.chat.completions.create(
           model="gpt-4o", messages=[{"role": "system", "content": ""},
@@ -163,8 +164,8 @@ if raw_text.strip() != "":
                                     {"role": "user", "content": "Review your answer and produce a revised version. Think step by step."}],
           temperature = 0)
         improved_output_text = response.choices[0].message.content
+        st.write(improved_output_text)
       
-      output_container.write(improved_output_text)
   except:
     st.error(" Error occurred when running model", icon="🚨")
   
