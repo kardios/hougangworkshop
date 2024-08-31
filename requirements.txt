@@ -4,4 +4,4 @@ google-generativeai
 openai >= 1.00
 pypdf >= 4.0
 pyTelegramBotAPI
-airtable
+pyairtable
