@@ -144,6 +144,7 @@ if raw_text.strip() != "":
         response_llama = requests.post(get_url_perplexity, json=payload_perplexity, headers=headers_perplexity)
         st.write(response_llama)
         data_llama = json.loads(response_llama.text)
+        st.write(data_llama)
         output_text = data_llama['choices'][0]['message']['content'] 
       
       end = time.time()
