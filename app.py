@@ -70,9 +70,14 @@ for item in pre_loaded_prompt_data['records']:
   prompt_text = item['fields']['Notes']
   prompt_title_list.append(prompt_title)
   prompt_text_list.append(prompt_text)
+prompt_title_list.append("Customise your own prompt")
+prompt_text_list.append("Your task is to do research and generate a short update based on an input topic. Present your answer in one concise and coherent paragraph that includes the main ideas, key details and any notable statistics.")
 
 Prompt_Option = st.selectbox("Which Prompt do I use?", prompt_title_list)
 index = prompt_title_list.index(Prompt_Option)
+
+if Prompt_Option = "Customise your own prompt":
+  prompt = "You are my smart reading and ideation assistant. You will read the input I provide." + st.text_input("Customise your own unique prompt:", prompt_text_list[index])
 
 if Option_Input == "Upload a pdf":
   uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
