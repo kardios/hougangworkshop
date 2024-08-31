@@ -154,7 +154,7 @@ if raw_text.strip() != "":
         improved_output_text = response.choices[0].message.content
     
     output_container = st.container(border=True)
-    output_container.write(output_text + "\n\nReview\n\n" + improved_output_text)
+    output_container.write(output_text + "\n\n**Review**\n\n" + improved_output_text)
     output_container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
     st.download_button(':floppy_disk:', output_text)
 
