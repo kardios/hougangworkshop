@@ -138,15 +138,6 @@ if raw_text.strip() != "":
         
       end = time.time()
 
-    output_container = st.container(border=True)
-    output_container.write(output_text)
-    output_container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
-    st.download_button(':floppy_disk:', output_text)
-
-    if st.button(':recycle:'):
-      
-      improved_output_container = st.container(border=True)
-            
       if Model_Option == "Claude 3.5 Sonnet":  
         message = anthropic.messages.create(
           model = "claude-3-5-sonnet-20240620",
@@ -157,7 +148,6 @@ if raw_text.strip() != "":
                     {"role": "assistant", "content": output_text},
                     {"role": "user", "content": "Review your answer and produce a revised version. Think step by step."}])
         improved_output_text = message.content[0].text
-        improved_output_container.write(output_text)
       
       elif Model_Option == "GPT-4 Omni":
         response = client.chat.completions.create(
@@ -167,8 +157,12 @@ if raw_text.strip() != "":
                                     {"role": "user", "content": "Review your answer and produce a revised version. Think step by step."}],
           temperature = 0)
         improved_output_text = response.choices[0].message.content
-        improved_output_container.write(output_text)
-      
+    
+    output_container = st.container(border=True)
+    output_container.write(output_text + "\n\nReview\n\n" + improved_output_text)
+    output_container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+    st.download_button(':floppy_disk:', output_text)
+
   except:
     st.error(" Error occurred when running model", icon="🚨")
   
