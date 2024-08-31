@@ -63,7 +63,7 @@ pre_loaded_prompt_data = response.json()
 prompt_title_list = []
 prompt_text_list = []
 
-for item in data['records']:
+for item in pre_loaded_prompt_data['records']:
   prompt_title = item['fields']['Name']
   prompt_text = item['fields']['Notes']
   prompt_title_list.append(prompt_title)
