@@ -19,6 +19,7 @@ py_airtable_table_id = os.environ['AIRTABLE_TABLE_ID']
 CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 CLAUDE_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 GEMINI_API_KEY = os.environ["GOOGLE_API_KEY"]
+LLAMA3_API_KEY = os.environ["PERPLEXITY_API_KEY"]
 
 client = OpenAI(api_key=CLIENT_API_KEY)
 anthropic = Anthropic(api_key=CLAUDE_API_KEY)
@@ -34,19 +35,18 @@ safety_settings = {
 generation_config = genai.GenerationConfig(candidate_count = 1, temperature = 0)
 
 st.set_page_config(page_title="Readhacker Beta", page_icon=":sunglasses:",)
-st.write("**Readhacker Beta**, your smart reading and ideation assistant")
+st.write("**WORK IN PROGRESS**, your smart reading and ideation assistant")
 
 with st.expander("Click to read documentation"):
-  st.write("- Productivity app by **Sherwood Analytica**")
+  st.write("- Productivity app by **XXX**")
   st.write("- Upload a PDF or enter free text as input")
   st.write("- Generate a summary or analysis of input") 
   st.write("- GPT-4 Omni - up to 128,000 tokens") 
   st.write("- Claude 3.5 Sonnet - up to 200,000 tokens")
-  st.write("- Gemini 1.5 Pro - up to 2 million tokens") 
   st.write("- :red[**Answers may not be suitable or accurate**]")
   st.write("- :blue[**Try reloading webpage to troubleshoot**]")
 
-Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Omni', 'Claude 3.5 Sonnet'))
+Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Omni', 'Claude 3.5 Sonnet', 'Llama 3.1 Sonar'))
 
 Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
 
@@ -130,7 +130,21 @@ if raw_text.strip() != "":
           temperature = 0,
         )
         output_text = response.choices[0].message.content
-        
+
+      elif Model_Option == "Llama 3.1 Sonar":
+        get_url_perplexity = "https://api.perplexity.ai/chat/completions"
+        payload_perplexity = {
+          "model": "llama-3.1-sonar-huge-128k-online",
+          "messages": [{"role": "system", "content": ""},
+                       {"role": "user", "content": prompt}],
+          "temperature": 0}
+        headers_perplexity = {"accept": "application/json",
+                              "content-type": "application/json",
+                              "Authorization": f'Bearer {LLAMA3_API_KEY}'}
+        response_llama = requests.post(get_url_perplexity,   json=payload_perplexity, headers=headers_perplexity)
+        data = json.loads(response.text)
+        output_text = data['choices'][0]['message']['content'] 
+      
       end = time.time()
 
       if Model_Option == "Claude 3.5 Sonnet":  
