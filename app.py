@@ -142,9 +142,7 @@ if raw_text.strip() != "":
                               "content-type": "application/json",
                               "Authorization": f'Bearer {LLAMA3_API_KEY}'}
         response_llama = requests.post(get_url_perplexity, json=payload_perplexity, headers=headers_perplexity)
-        st.write(response_llama)
         data_llama = json.loads(response_llama.text)
-        st.write(data_llama)
         output_text = data_llama['choices'][0]['message']['content'] 
       
       end = time.time()
@@ -168,6 +166,9 @@ if raw_text.strip() != "":
                                     {"role": "user", "content": "Review your answer and produce a revised version. Think step by step."}],
           temperature = 0)
         improved_output_text = response.choices[0].message.content
+
+      else:
+        improved_output_text = ''
     
     output_container = st.container(border=True)
     output_container.write(output_text + "\n\n**Review**\n\n" + improved_output_text)
