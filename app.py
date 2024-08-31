@@ -12,9 +12,9 @@ from pypdf import PdfReader
 
 # Retrieve the API keys from the environment variables
 
-py_airtable_access_key = os.environ('AIRTABLE_ACCESS_KEY') 
-py_airtable_base_id = os.environ('AIRTABLE_BASE_ID') 
-py_airtable_table_id = os.environ('AIRTABLE_TABLE_ID') 
+py_airtable_access_key = os.environ['AIRTABLE_ACCESS_KEY']
+py_airtable_base_id = os.environ['AIRTABLE_BASE_ID']
+py_airtable_table_id = os.environ['AIRTABLE_TABLE_ID'] 
 
 CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 CLAUDE_API_KEY = os.environ["ANTHROPIC_API_KEY"]
