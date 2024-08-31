@@ -99,7 +99,7 @@ if raw_text.strip() != "":
     
       start = time.time()
       
-      prompt = prompt_text_list[index] + "\n\n<input_source>\n\n" + raw_text + "\n\n</input_source>\n\n"
+      prompt = prompt_text_list[index] + "\n\n" + raw_text
       
       if Model_Option == "Claude 3.5 Sonnet":  
         message = anthropic.messages.create(
