@@ -46,7 +46,7 @@ with st.expander("Click to read documentation"):
   st.write("- :red[**Answers may not be suitable or accurate**]")
   st.write("- :blue[**Try reloading webpage to troubleshoot**]")
 
-Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Omni', 'Claude 3.5 Sonnet', 'Gemini 1.5 Pro'))
+Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Omni', 'Claude 3.5 Sonnet'))
 
 Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
 
@@ -120,12 +120,6 @@ if raw_text.strip() != "":
           ]
         )
         output_text = message.content[0].text
-  
-      elif Model_Option == "Gemini 1.5 Pro":
-        gemini = genai.GenerativeModel("gemini-1.5-pro-exp-0827")
-        chat = gemini.start_chat(history=[])
-        response = chat(prompt, safety_settings = safety_settings, generation_config = generation_config)
-        output_text = response.text
 
       elif Model_Option == "GPT-4 Omni":
         response = client.chat.completions.create(
@@ -149,10 +143,6 @@ if raw_text.strip() != "":
                     {"role": "assistant", "content": output_text},
                     {"role": "user", "content": "Review your answer and produce a revised version. Think step by step."}])
         improved_output_text = message.content[0].text
-
-      elif Model_Option == "Gemini 1.5 Pro":
-        response = chat("Review your answer and produce a revised version. Think step by step.", safety_settings = safety_settings, generation_config = generation_config)
-        improved_output_text = response.text
       
       elif Model_Option == "GPT-4 Omni":
         response = client.chat.completions.create(
