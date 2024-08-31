@@ -1,6 +1,9 @@
 import streamlit as st
 import os
 import time
+from pyairtable import Api
+import requests
+import json
 from anthropic import Anthropic
 import google.generativeai as genai
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
@@ -8,9 +11,15 @@ from openai import OpenAI
 from pypdf import PdfReader
 
 # Retrieve the API keys from the environment variables
+
+py_airtable_access_key = os.environ('AIRTABLE_ACCESS_KEY') 
+py_airtable_base_id = os.environ('AIRTABLE_BASE_ID') 
+py_airtable_table_id = os.environ('AIRTABLE_TABLE_ID') 
+
 CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 CLAUDE_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 GEMINI_API_KEY = os.environ["GOOGLE_API_KEY"]
+
 client = OpenAI(api_key=CLIENT_API_KEY)
 anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
@@ -63,3 +72,26 @@ elif Option_Action == "Generate markdown summary":
 elif Option_Action == "Customise your own prompt":
   instruction = "You are my reading assistant. You will read the input I provide." + st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
 
+get_url = f'https://api.airtable.com/v0/{airtable_base_id}/{airtable_table_id}'
+headers = {
+    'Authorization': f'Bearer {airtable_access_key}',
+    'Content-Type': 'application/json',
+}
+params = {
+    'sort[0][field]': 'Order',
+    'sort[0][direction]': 'asc'
+}
+response = requests.get(get_url, headers=headers, params=params)
+pre_loaded_prompt_data = response.json()
+
+prompt_title_list = []
+prompt_text_list = []
+
+for item in data['records']:
+  prompt_title = item['fields']['Name']
+  prompt_text = item['fields']['Notes']
+  prompt_title_list.append(prompt_title)
+  prompt_text_list.append(prompt_text)
+
+Prompt_Option = st.selectbox("Which Prompt do I use?", prompt_title_list)
+index = prompt_title_list.index(Prompt_Option)
