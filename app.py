@@ -72,5 +72,75 @@ for item in pre_loaded_prompt_data['records']:
 Prompt_Option = st.selectbox("Which Prompt do I use?", prompt_title_list)
 index = prompt_title_list.index(Prompt_Option)
 
-st.write(prompt_title_list[index])
-st.write(prompt_text_list[index])
+if Option_Input == "Upload a pdf":
+  uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
+  raw_text = ""
+  if uploaded_file is not None:
+    try:
+      doc_reader = PdfReader(uploaded_file)
+      with st.spinner("Extracting from PDF document..."):
+        for i, page in enumerate(doc_reader.pages):
+          text = page.extract_text()
+          if text:
+            raw_text = raw_text + text + "\n"
+    except:
+      st.error(" Error occurred when loading document", icon="🚨")
+elif Option_Input == "Enter free text":
+  raw_text = ""
+  input_text = st.text_area("Enter the text you would like me to summarize or analyse and click **Let\'s Go :rocket:**")
+  if st.button("Let\'s Go! :rocket:"):
+    raw_text = input_text
+    
+if raw_text.strip() != "":
+  try:
+    with st.spinner("Running AI Model...."):
+    
+      start = time.time()
+      
+      prompt = prompt_text_list[index] + "\n\n<input_source>\n\n" + raw_text + "\n\n<input_source>\n\n"
+      
+      if Model_Option == "Claude 3.5 Sonnet":  
+        message = anthropic.messages.create(
+          model = "claude-3-5-sonnet-20240620",
+          max_tokens = 4096,
+          temperature = 0,
+          system= "",
+          messages=[
+            {  
+              "role": "user",
+              "content": [
+                {
+                  "type": "text",
+                  "text": prompt,
+                }
+              ]
+            }
+          ]
+        )
+        output_text = message.content[0].text
+  
+      elif Model_Option == "Gemini 1.5 Pro":
+        gemini = genai.GenerativeModel("gemini-1.5-pro-exp-0827")
+        response = gemini.generate_content(prompt, safety_settings = safety_settings, generation_config = generation_config)
+        output_text = response.text
+
+      elif Model_Option == "GPT-4 Omni":
+        response = client.chat.completions.create(
+          model="gpt-4o", messages=[
+            {"role": "system", "content": ""},
+            {"role": "user", "content": prompt},
+          ],
+          temperature = 0,
+        )
+        output_text = response.choices[0].message.content
+        
+      end = time.time()
+
+    output_container = st.container(border=True)
+    output_container.write(output_text)
+    output_container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+    st.download_button(':floppy_disk:', output_text)
+
+  except:
+    st.error(" Error occurred when running model", icon="🚨")
+  
