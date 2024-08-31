@@ -76,7 +76,7 @@ prompt_text_list.append("Your task is to do research and generate a short update
 Prompt_Option = st.selectbox("Which Prompt do I use?", prompt_title_list)
 index = prompt_title_list.index(Prompt_Option)
 
-if Prompt_Option = "Customise your own prompt":
+if Prompt_Option == "Customise your own prompt":
   prompt = "You are my smart reading and ideation assistant. You will read the input I provide." + st.text_input("Customise your own unique prompt:", prompt_text_list[index])
 
 if Option_Input == "Upload a pdf":
