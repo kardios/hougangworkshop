@@ -142,6 +142,7 @@ if raw_text.strip() != "":
                               "content-type": "application/json",
                               "Authorization": f'Bearer {LLAMA3_API_KEY}'}
         response_llama = requests.post(get_url_perplexity,   json=payload_perplexity, headers=headers_perplexity)
+        st.write(data)
         data = json.loads(response.text)
         output_text = data['choices'][0]['message']['content'] 
       
