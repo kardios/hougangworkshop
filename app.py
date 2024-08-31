@@ -71,3 +71,6 @@ for item in pre_loaded_prompt_data['records']:
 
 Prompt_Option = st.selectbox("Which Prompt do I use?", prompt_title_list)
 index = prompt_title_list.index(Prompt_Option)
+
+st.write(prompt_title_list[index])
+st.write(prompt_text_list[index])
