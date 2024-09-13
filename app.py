@@ -70,7 +70,7 @@ Remember to base your analysis and ranking solely on the information provided in
 #################
 
 st.set_page_config(page_title="HOUGANG WORKSHOP", page_icon=":sunglasses:",)
-st.write("**EXPERIMENT & EVALUATE**, your smart reading and ideation assistant")
+st.write("**EXPERIMENT & EVALUATE**, your AI reading and ideation assistant")
 
 with st.expander("Click to read documentation"):
   st.write("- Productivity app by **EXPERIMENTAL**")
