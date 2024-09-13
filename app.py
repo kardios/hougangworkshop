@@ -19,7 +19,6 @@ py_airtable_table_id = os.environ['AIRTABLE_TABLE_ID']
 CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 CLAUDE_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 GEMINI_API_KEY = os.environ["GOOGLE_API_KEY"]
-LLAMA3_API_KEY = os.environ["PERPLEXITY_API_KEY"]
 
 client = OpenAI(api_key=CLIENT_API_KEY)
 anthropic = Anthropic(api_key=CLAUDE_API_KEY)
@@ -34,19 +33,20 @@ safety_settings = {
 
 generation_config = genai.GenerationConfig(candidate_count = 1, temperature = 0)
 
-st.set_page_config(page_title="Readhacker Beta", page_icon=":sunglasses:",)
+st.set_page_config(page_title="Readhacker on Steroids", page_icon=":sunglasses:",)
 st.write("**WORK IN PROGRESS**, your smart reading and ideation assistant")
 
 with st.expander("Click to read documentation"):
-  st.write("- Productivity app by **XXX**")
+  st.write("- Productivity app by **EXPERIMENTAL**")
   st.write("- Upload a PDF or enter free text as input")
   st.write("- Generate a summary or analysis of input") 
   st.write("- GPT-4 Omni - up to 128,000 tokens") 
   st.write("- Claude 3.5 Sonnet - up to 200,000 tokens")
+  st.write("- O1 Preview - up to 128,000 tokens (EXPERIMENTAL)")
   st.write("- :red[**Answers may not be suitable or accurate**]")
   st.write("- :blue[**Try reloading webpage to troubleshoot**]")
 
-Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Omni', 'Claude 3.5 Sonnet', 'Llama 3.1 Sonar'))
+Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Omni', 'Claude 3.5 Sonnet', 'Gemini 1.5 Pro', 'o1-preview'))
 
 Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
 
@@ -101,85 +101,64 @@ elif Option_Input == "Enter free text":
 if raw_text.strip() != "":
   try:
     with st.spinner("Running AI Model...."):
-    
+      input = prompt_text_list[index] + "\n\n" + raw_text
+
+      # Claude 3.5 Sonnet
       start = time.time()
-      
-      prompt = prompt_text_list[index] + "\n\n" + raw_text
-      
-      if Model_Option == "Claude 3.5 Sonnet":  
-        message = anthropic.messages.create(
-          model = "claude-3-5-sonnet-20240620",
-          max_tokens = 4096,
-          temperature = 0,
-          system= "",
-          messages=[
-            {  
-              "role": "user",
-              "content": [
-                {
-                  "type": "text",
-                  "text": prompt,
-                }
-              ]
-            }
-          ]
-        )
-        output_text = message.content[0].text
-
-      elif Model_Option == "GPT-4 Omni":
-        response = client.chat.completions.create(
-          model="gpt-4o", messages=[
-            {"role": "system", "content": ""},
-            {"role": "user", "content": prompt},
-          ],
-          temperature = 0,
-        )
-        output_text = response.choices[0].message.content
-
-      elif Model_Option == "Llama 3.1 Sonar":
-        get_url_perplexity = "https://api.perplexity.ai/chat/completions"
-        payload_perplexity = {
-          "model": "llama-3.1-sonar-huge-128k-online",
-          "messages": [{"role": "system", "content": ""},
-                       {"role": "user", "content": prompt}],
-          "temperature": 0}
-        headers_perplexity = {"accept": "application/json",
-                              "content-type": "application/json",
-                              "Authorization": f'Bearer {LLAMA3_API_KEY}'}
-        response_llama = requests.post(get_url_perplexity, json=payload_perplexity, headers=headers_perplexity)
-        data_llama = json.loads(response_llama.text)
-        output_text = data_llama['choices'][0]['message']['content'] 
-      
+      message = anthropic.messages.create(model = "claude-3-5-sonnet-20240620",
+                                                   max_tokens = 4096,
+                                                   temperature = 0,
+                                                   system= "",
+                                                   messages=[{"role": "user", "content": input}])
+      output_text1 = message.content[0].text
       end = time.time()
-
-      if Model_Option == "Claude 3.5 Sonnet":  
-        message = anthropic.messages.create(
-          model = "claude-3-5-sonnet-20240620",
-          max_tokens = 4096,
-          temperature = 0,
-          system= "",
-          messages=[{"role": "user", "content": prompt},
-                    {"role": "assistant", "content": output_text},
-                    {"role": "user", "content": "Review your answer and produce a revised version. Think step by step."}])
-        improved_output_text = message.content[0].text
+      with st.expander("Claude 3.5 Sonnet"):
+        st.write(output_text1)
+        st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+        st_copy_to_clipboard(output_text1)
+      st.snow()
       
-      elif Model_Option == "GPT-4 Omni":
-        response = client.chat.completions.create(
-          model="gpt-4o", messages=[{"role": "system", "content": ""},
-                                    {"role": "user", "content": prompt},
-                                    {"role": "assistant", "content": output_text},
-                                    {"role": "user", "content": "Review your answer and produce a revised version. Think step by step."}],
-          temperature = 0)
-        improved_output_text = response.choices[0].message.content
+      # Gemini 1.5 Pro
+      start = time.time()
+      gemini = genai.GenerativeModel("gemini-1.5-pro-exp-0827")
+      response = gemini.generate_content(input, safety_settings = safety_settings, generation_config = generation_config)
+      output_text2 = response.text
+      end = time.time()
+      with st.expander("Gemini 1.5 Pro"):
+        st.write(output_text2)
+        st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+        st_copy_to_clipboard(output_text2)
+      st.snow()
 
-      else:
-        improved_output_text = ''
-    
-    output_container = st.container(border=True)
-    output_container.write(output_text + "\n\n**Review**\n\n" + improved_output_text)
-    output_container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
-    st.download_button(':floppy_disk:', output_text)
+      # GPT-4 Omni
+      start = time.time()
+      response = client.chat.completions.create(model="gpt-4o-2024-08-06", 
+                                                messages=[{"role": "system", "content": ""},
+                                                          {"role": "user", "content": input}],
+                                                          temperature=0)
+      output_text3 = response.choices[0].message.content
+      end = time.time()
+      with st.expander("GPT-4 Omni"):
+        st.write(output_text3)
+        st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+        st_copy_to_clipboard(output_text3)
+      st.snow()
 
+      # O1 Preview
+      start = time.time()
+      response = client.chat.completions.create(model="o1-preview", 
+                                                messages=[{"role": "user", "content": input}])
+      output_text4 = response.choices[0].message.content      
+      end = time.time()
+      with st.expander("O1 Preview"):
+        st.write(output_text4)
+        st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+        st_copy_to_clipboard(output_text4)
+      st.snow()
+
+      # Putting it all together
+      total_output_text = "**Claude 3.5 Sonnet**\n\n" + output_text1 + "\n\n**Gemini 1.5 Pro**\n\n" + output_text2 + "\n\n**GPT-4 Omni**\n\n" + output_text3 + "\n\n**O1 Preview**\n\n" + output_text4
+      st_copy_to_clipboard(total_output_text)
+      
   except:
     st.error(" Error occurred when running model", icon="🚨")
-  
