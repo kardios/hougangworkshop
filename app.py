@@ -33,7 +33,7 @@ safety_settings = {
 
 generation_config = genai.GenerationConfig(candidate_count = 1, temperature = 0)
 
-st.set_page_config(page_title="Readhacker on Steroids", page_icon=":sunglasses:",)
+st.set_page_config(page_title="HOUGANG WORKSHOP", page_icon=":sunglasses:",)
 st.write("**WORK IN PROGRESS**, your smart reading and ideation assistant")
 
 with st.expander("Click to read documentation"):
