@@ -197,19 +197,29 @@ if raw_text.strip() != "":
       # st_copy_to_clipboard(total_output_text)
 
       output_text1 = "\n\n<summary_1>\n" + output_text1 + "\n</summary_1>\n\n"
+      st.write("Checkpoint 1")
       output_text2 = "\n\n<summary_2>\n" + output_text2 + "\n</summary_2>\n\n"
+      st.write("Checkpoint 2")
       output_text3 = "\n\n<summary_3>\n" + output_text3 + "\n</summary_3>\n\n"
+      st.write("Checkpoint 3")
       output_text4 = "\n\n<summary_4>\n" + output_text4 + "\n</summary_4>\n\n"
+      st.write("Checkpoint 4")
       input_text = "\n\n<input_source>\n" + raw_text + "\n</input_source>\n\n"
+      st.write("Checkpoint 5")
       input = checking_prompt + input_text + output_text1 + output_text2 + output_text3 + output_text_4
+      st.write("Checkpoint 6")
       with st.expander("COMBINED INPUT"):
         st.write(input)
       
       # EVALUATION: Use Gemini 1.5 Pro
       start = time.time()
+      st.write("Checkpoint 7")
       gemini = genai.GenerativeModel("gemini-1.5-pro-exp-0827")
+      st.write("Checkpoint 8")
       response = gemini.generate_content(input, safety_settings = safety_settings, generation_config = generation_config)
+      st.write("Checkpoint 9")
       evaluation_text = response.text
+      st.write("Checkpoint 10")
       end = time.time()
       with st.expander("EVALUATION"):
         st.write(evaluation_text)
