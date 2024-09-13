@@ -34,6 +34,41 @@ safety_settings = {
 
 generation_config = genai.GenerationConfig(candidate_count = 1, temperature = 0)
 
+#################
+# CHECKING PROMPT
+checking_prompt = """You are an expert at verifying whether summaries are consistent with their source text. Your task is to check four summaries against the given input source text and rank them from best to worst based on their accuracy, completeness, and consistency with the input source text.
+
+First, carefully read the input source text contained within the <input_source> tags.
+
+Now, examine the following four summaries contained within the <summary_1>, <summary_2>, <summary_3> and <summary_4> tags.
+
+For each summary, perform the following steps:
+1. Analyze the accuracy of the information presented.
+2. Check for any factual errors or misrepresentations.
+3. Evaluate the completeness of the summary in capturing key points from the source text.
+4. Assess the consistency of the summary's tone and perspective with the original text.
+
+After analyzing all four summaries, compare them to determine their relative quality. Rank the summaries from best to worst based on your analysis.
+
+Provide your response in the following format:
+
+**ANALYSIS**
+[Provide a detailed analysis of each summary, discussing its strengths and weaknesses in terms of accuracy, completeness, and consistency with the source text.]
+
+**RANKING**
+1. [Best summary number]
+2. [Second-best summary number]
+3. [Third-best summary number]
+4. [Worst summary number]
+
+**JUSTIFICATION**
+[Explain your ranking, highlighting the key factors that influenced your decision for each summary's placement.
+
+Remember to base your analysis and ranking solely on the information provided in the input source text and the given summaries. Do not introduce any external information or make assumptions beyond what is explicitly stated in the provided content."""
+
+# CHECKING PROMPT
+#################
+
 st.set_page_config(page_title="HOUGANG WORKSHOP", page_icon=":sunglasses:",)
 st.write("**WORK IN PROGRESS**, your smart reading and ideation assistant")
 
@@ -158,8 +193,29 @@ if raw_text.strip() != "":
       st.snow()
 
       # Putting it all together
-      total_output_text = "**Claude 3.5 Sonnet**\n\n" + output_text1 + "\n\n**Gemini 1.5 Pro**\n\n" + output_text2 + "\n\n**GPT-4 Omni**\n\n" + output_text3 + "\n\n**O1 Preview**\n\n" + output_text4
-      st_copy_to_clipboard(total_output_text)
+      # total_output_text = "**Claude 3.5 Sonnet**\n\n" + output_text1 + "\n\n**Gemini 1.5 Pro**\n\n" + output_text2 + "\n\n**GPT-4 Omni**\n\n" + output_text3 + "\n\n**O1 Preview**\n\n" + output_text4
+      # st_copy_to_clipboard(total_output_text)
+
+      output_text1 = "\n\n<summary_1>\n" + output_text1 + "\n</summary_1>\n\n"
+      output_text2 = "\n\n<summary_2>\n" + output_text2 + "\n</summary_2>\n\n"
+      output_text3 = "\n\n<summary_3>\n" + output_text3 + "\n</summary_3>\n\n"
+      output_text4 = "\n\n<summary_4>\n" + output_text4 + "\n</summary_4>\n\n"
+      input_text = "\n\n<input_source>\n" + raw_text + "\n</input_source>\n\n"
+      input = checking_prompt +  input_text + output_text1 + output_text2 + output_text3 + output_text_4
+      st.expander("COMBINED INPUT"):
+        st.write(input)
       
+      # EVALUATION: Use Gemini 1.5 Pro
+      start = time.time()
+      gemini = genai.GenerativeModel("gemini-1.5-pro-exp-0827")
+      response = gemini.generate_content(input, safety_settings = safety_settings, generation_config = generation_config)
+      evaluation_text = response.text
+      end = time.time()
+      with st.expander("EVALUATION"):
+        st.write(output_text2)
+        st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+        st_copy_to_clipboard(output_text2)
+      st.balloon()
+
   except:
     st.error(" Error occurred when running model", icon="🚨")
