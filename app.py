@@ -136,7 +136,7 @@ elif Option_Input == "Enter free text":
     
 if raw_text.strip() != "":
   try:
-    with st.spinner("Running AI Model...."):
+    with st.spinner("Running AI Model....."):
       input = prompt_text_list[index] + "\n\n" + raw_text
 
       # Claude 3.5 Sonnet
@@ -212,9 +212,9 @@ if raw_text.strip() != "":
       evaluation_text = response.text
       end = time.time()
       with st.expander("EVALUATION"):
-        st.write(output_text2)
+        st.write(evaluation_text)
         st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
-        st_copy_to_clipboard(output_text2)
+        st_copy_to_clipboard(evaluation_text)
       st.balloon()
 
   except:
