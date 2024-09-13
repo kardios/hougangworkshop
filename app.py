@@ -47,9 +47,9 @@ with st.expander("Click to read documentation"):
   st.write("- :red[**Answers may not be suitable or accurate**]")
   st.write("- :blue[**Try reloading webpage to troubleshoot**]")
 
-Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Omni', 'Claude 3.5 Sonnet', 'Gemini 1.5 Pro', 'o1-preview'))
+Model_Option = st.selectbox("DISABLED: What Large Language Model do I use?", ('GPT-4 Omni', 'Claude 3.5 Sonnet', 'Gemini 1.5 Pro', 'o1-preview'))
 
-Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
+Option_Input = st.selectbox("ENABLED: How will I receive your input?", ('Upload a pdf','Enter free text'))
 
 get_url = f'https://api.airtable.com/v0/{py_airtable_base_id}/{py_airtable_table_id}'
 headers = {
@@ -121,9 +121,7 @@ if raw_text.strip() != "":
       
       # Gemini 1.5 Pro
       start = time.time()
-      st.write("Checkpoint 1")
       gemini = genai.GenerativeModel("gemini-1.5-pro-exp-0827")
-      st.write("Checkpoint 1")
       response = gemini.generate_content(input, safety_settings = safety_settings, generation_config = generation_config)
       output_text2 = response.text
       end = time.time()
