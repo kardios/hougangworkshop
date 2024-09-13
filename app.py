@@ -70,7 +70,7 @@ Remember to base your analysis and ranking solely on the information provided in
 #################
 
 st.set_page_config(page_title="HOUGANG WORKSHOP", page_icon=":sunglasses:",)
-st.write("**EXPERIMENT & EVALUATE**, your AI reading and ideation assistant")
+st.write("**EXPERIMENT, EVALUATE AND EXCITE**, your AI reading and ideation assistant")
 
 with st.expander("Click to read documentation"):
   st.write("- Productivity app by **EXPERIMENTAL**")
@@ -136,7 +136,7 @@ elif Option_Input == "Enter free text":
     
 if raw_text.strip() != "":
   try:
-    with st.spinner("Running AI Model..."):
+    with st.spinner("Running AI Model."):
       input = prompt_text_list[index] + "\n\n" + raw_text
 
       # Claude 3.5 Sonnet
