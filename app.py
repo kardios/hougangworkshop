@@ -202,7 +202,7 @@ if raw_text.strip() != "":
       output_text4 = "\n\n<summary_4>\n" + output_text4 + "\n</summary_4>\n\n"
       input_text = "\n\n<input_source>\n" + raw_text + "\n</input_source>\n\n"
       input = checking_prompt +  input_text + output_text1 + output_text2 + output_text3 + output_text_4
-      st.expander("COMBINED INPUT"):
+      with st.expander("COMBINED INPUT"):
         st.write(input)
       
       # EVALUATION: Use Gemini 1.5 Pro
