@@ -5,3 +5,4 @@ openai >= 1.00
 pypdf >= 4.0
 pyTelegramBotAPI
 pyairtable
+st-copy-to-clipboard
