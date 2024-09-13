@@ -196,27 +196,18 @@ if raw_text.strip() != "":
       # total_output_text = "**Claude 3.5 Sonnet**\n\n" + output_text1 + "\n\n**Gemini 1.5 Pro**\n\n" + output_text2 + "\n\n**GPT-4 Omni**\n\n" + output_text3 + "\n\n**O1 Preview**\n\n" + output_text4
       # st_copy_to_clipboard(total_output_text)
 
-      output_text1 = "\n\n<summary_1>\n" + output_text1 + "\n</summary_1>\n\n"
-      st.write(output_text1)
-      output_text2 = "\n\n<summary_2>\n" + output_text2 + "\n</summary_2>\n\n"
-      st.write(output_text2)
-      output_text3 = "\n\n<summary_3>\n" + output_text3 + "\n</summary_3>\n\n"
-      st.write(output_text3)
-      output_text4 = "\n\n<summary_4>\n" + output_text4 + "\n</summary_4>\n\n"
-      st.write(output_text4)
-      input_text = "\n\n<input_source>\n" + raw_text + "\n</input_source>\n\n"
-      st.write(input_text)
-      input = checking_prompt + input_text + output_text1 + output_text2 + output_text3 + output_text_4
+      output_text1 = "  \n\n<summary_1>" + output_text1 + "</summary_1>  \n\n"
+      output_text2 = "  \n\n<summary_2>" + output_text2 + "</summary_2>  \n\n"
+      output_text3 = "  \n\n<summary_3>" + output_text3 + "</summary_3>  \n\n"
+      output_text4 = "  \n\n<summary_4>" + output_text4 + "</summary_4>  \n\n"
+      input_text = "  \n\n<input_source>" + raw_text + "</input_source>  \n\n"
+      input = checking_prompt + input_text + output_text1 + output_text2 + output_text3 + output_text4
       
       # EVALUATION: Use Gemini 1.5 Pro
       start = time.time()
-      st.write("Checkpoint 1")
       gemini = genai.GenerativeModel("gemini-1.5-pro-exp-0827")
-      st.write("Checkpoint 2")
       response = gemini.generate_content(input, safety_settings = safety_settings, generation_config = generation_config)
-      st.write("Checkpoint 3")
       evaluation_text = response.text
-      st.write("Checkpoint 4")
       end = time.time()
       with st.expander("EVALUATION"):
         st.write(evaluation_text)
