@@ -9,6 +9,7 @@ import google.generativeai as genai
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
 from openai import OpenAI
 from pypdf import PdfReader
+from st_copy_to_clipboard import st_copy_to_clipboard
 
 # Retrieve the API keys from the environment variables
 
@@ -116,6 +117,7 @@ if raw_text.strip() != "":
         st.write(output_text1)
         st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
         st_copy_to_clipboard(output_text1)
+      st.snow()
       
       # Gemini 1.5 Pro
       start = time.time()
@@ -129,7 +131,8 @@ if raw_text.strip() != "":
         st.write(output_text2)
         st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
         st_copy_to_clipboard(output_text2)
-
+      st.snow()
+      
       # GPT-4 Omni
       start = time.time()
       response = client.chat.completions.create(model="gpt-4o-2024-08-06", 
@@ -142,7 +145,8 @@ if raw_text.strip() != "":
         st.write(output_text3)
         st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
         st_copy_to_clipboard(output_text3)
-
+      st.snow()
+      
       # O1 Preview
       start = time.time()
       response = client.chat.completions.create(model="o1-preview", 
@@ -153,6 +157,7 @@ if raw_text.strip() != "":
         st.write(output_text4)
         st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
         st_copy_to_clipboard(output_text4)
+      st.snow()
 
       # Putting it all together
       total_output_text = "**Claude 3.5 Sonnet**\n\n" + output_text1 + "\n\n**Gemini 1.5 Pro**\n\n" + output_text2 + "\n\n**GPT-4 Omni**\n\n" + output_text3 + "\n\n**O1 Preview**\n\n" + output_text4
