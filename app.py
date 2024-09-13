@@ -201,7 +201,7 @@ if raw_text.strip() != "":
       output_text3 = "\n\n<summary_3>\n" + output_text3 + "\n</summary_3>\n\n"
       output_text4 = "\n\n<summary_4>\n" + output_text4 + "\n</summary_4>\n\n"
       input_text = "\n\n<input_source>\n" + raw_text + "\n</input_source>\n\n"
-      input = checking_prompt +  input_text + output_text1 + output_text2 + output_text3 + output_text_4
+      input = checking_prompt + input_text + output_text1 + output_text2 + output_text3 + output_text_4
       with st.expander("COMBINED INPUT"):
         st.write(input)
       
