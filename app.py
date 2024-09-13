@@ -136,7 +136,7 @@ elif Option_Input == "Enter free text":
     
 if raw_text.strip() != "":
   try:
-    with st.spinner("Running AI Model."):
+    with st.spinner("Running AI Model..."):
       input = prompt_text_list[index] + "\n\n" + raw_text
 
       # Claude 3.5 Sonnet
