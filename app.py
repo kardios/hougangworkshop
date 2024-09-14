@@ -115,7 +115,7 @@ index = prompt_title_list.index(Prompt_Option)
 if Prompt_Option == "Customise your own prompt":
   prompt = "You are my smart reading and ideation assistant. You will read the input I provide." + st.text_input("Customise your own unique prompt:", prompt_text_list[index])
 else:
-  prompt = prompt_text_index[index]
+  prompt = prompt_text_list[index]
 
 if Option_Input == "Upload a pdf":
   uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
