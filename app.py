@@ -158,15 +158,10 @@ if raw_text.strip() != "":
       
       # Gemini 1.5 Pro
       start = time.time()
-      st.write("Checkpoint #1")
       gemini = genai.GenerativeModel("gemini-1.5-pro-exp-0827")
-      st.write("Checkpoint #2")
       response = gemini.generate_content(input, safety_settings = safety_settings, generation_config = generation_config)
-      st.write("Checkpoint #3")
       output_text2 = response.text
-      st.write("Checkpoint #4")
       end = time.time()
-      st.write("Checkpoint #5")
       with st.expander("Gemini 1.5 Pro"):
         st.write(output_text2)
         st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
