@@ -34,8 +34,6 @@ safety_settings = {
 
 generation_config = genai.GenerationConfig(candidate_count = 1, temperature = 0)
 
-strawberry_model = "o1-mini"
-
 #################
 # CHECKING PROMPT
 checking_prompt = """You are an expert at verifying whether summaries are consistent with their source text. Your task is to check four summaries against the given input source text and rank them from best to worst based on their accuracy, completeness, and consistency with the input source text.
@@ -85,6 +83,8 @@ with st.expander("Click to read documentation"):
   st.write("- :blue[**Try reloading webpage to troubleshoot**]")
 
 Model_Option = st.selectbox("DISABLED: What Large Language Model do I use?", ('GPT-4 Omni', 'Claude 3.5 Sonnet', 'Gemini 1.5 Pro', 'Strawberry'))
+
+strawberry_model = st.selectbox("ENABLED: Which o1 series model do I use?", ("o1-mini","o1-preview"))
 
 Option_Input = st.selectbox("ENABLED: How will I receive your input?", ('Upload a pdf','Enter free text'))
 
