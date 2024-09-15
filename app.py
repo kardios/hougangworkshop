@@ -40,7 +40,7 @@ checking_prompt = """You are an expert at verifying whether summaries are consis
 
 First, carefully read the input source text contained within the <input_source> tags.
 
-Now, examine the following four summaries contained within the <summary_1>, <summary_2>, <summary_3> and <summary_4> tags.
+Now, examine the following four summaries contained within the <answer_1>, <answer_2>, <answer_3> and <answer_4> tags.
 
 For each summary, perform the following steps:
 1. Analyze the accuracy of the information presented.
@@ -68,6 +68,44 @@ Remember to base your analysis and ranking solely on the information provided in
 
 # CHECKING PROMPT
 #################
+
+checking_prompt = """You are tasked with evaluating and ranking four different answers produced by Large Language Models (LLMs) based on a given prompt and source text. Your goal is to determine which answer is the most accurate, complete, and consistent with both the prompt and the source text.
+
+First, carefully read the following source text contained within the <input_source> tags.
+
+Now, consider the prompt that was used to generate the answers, contained within the <prompt_text> tags.
+
+The four answers produced by different LLMs are contained within the <answer_1>, <answer_2>, <answer_3> and <answer_4> tags.
+
+To evaluate and rank these answers, follow these steps:
+
+1. Carefully read each answer and compare it to the source text and prompt.
+2. Assess each answer based on the following criteria:
+   a. Accuracy: How well does the answer align with the information provided in the source text?
+   b. Completeness: Does the answer address all aspects of the prompt?
+   c. Consistency: Is the answer consistent with both the prompt and the source text?
+3. Take notes on the strengths and weaknesses of each answer.
+4. Rank the answers from best (1) to worst (4) based on your assessment.
+
+Provide your evaluation and ranking in the following format:
+
+**ASSESSMENT**
+[Your assessment of Answer 1, including strengths and weaknesses]
+[Your assessment of Answer 2, including strengths and weaknesses]
+[Your assessment of Answer 3, including strengths and weaknesses]
+[Your assessment of Answer 4, including strengths and weaknesses]
+
+**RANKING**
+1. [Best answer number]
+2. [Second-best answer number]
+3. [Third-best answer number]
+4. [Worst answer number]
+
+**JUSTIFICATION**
+[Provide a brief explanation for your ranking, highlighting key differences between the answers and why you ranked them in this order]
+
+Remember to be objective and thorough in your assessment, focusing on the content and quality of each answer rather than stylistic differences. Your evaluation should help identify which LLM produced the most effective response to the given prompt based on the provided source text."""
+###########
 
 st.set_page_config(page_title="HOUGANG WORKSHOP", page_icon=":sunglasses:",)
 st.write("**EXPERIMENT, EVALUATE & EXCITE**, your AI reading and ideation assistant")
@@ -200,12 +238,13 @@ if raw_text.strip() != "":
       # total_output_text = "**Claude 3.5 Sonnet**\n\n" + output_text1 + "\n\n**Gemini 1.5 Pro**\n\n" + output_text2 + "\n\n**GPT-4 Omni**\n\n" + output_text3 + "\n\n**Strawberry**\n\n" + output_text4
       # st_copy_to_clipboard(total_output_text)
 
-      output_text1 = "  \n\n<summary_1>" + output_text1 + "</summary_1>  \n\n"
-      output_text2 = "  \n\n<summary_2>" + output_text2 + "</summary_2>  \n\n"
-      output_text3 = "  \n\n<summary_3>" + output_text3 + "</summary_3>  \n\n"
-      output_text4 = "  \n\n<summary_4>" + output_text4 + "</summary_4>  \n\n"
+      output_text1 = "  \n\n<answer_1>" + output_text1 + "</answer_1>  \n\n"
+      output_text2 = "  \n\n<answer_2>" + output_text2 + "</answer_2>  \n\n"
+      output_text3 = "  \n\n<answer_3>" + output_text3 + "</answer_3>  \n\n"
+      output_text4 = "  \n\n<answer_4>" + output_text4 + "</answer_4>  \n\n"
       input_text = "  \n\n<input_source>" + raw_text + "</input_source>  \n\n"
-      input = checking_prompt + input_text + output_text1 + output_text2 + output_text3 + output_text4
+      prompt_text = "  \n\n<prompt_text>" + prompt + "</prompt_text>  \n\n"
+      input = checking_prompt + input_text + prompt_text + output_text1 + output_text2 + output_text3 + output_text4
       
       # EVALUATION: Use Gemini 1.5 Pro
       start = time.time()
