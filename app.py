@@ -34,6 +34,8 @@ safety_settings = {
 
 generation_config = genai.GenerationConfig(candidate_count = 1, temperature = 0)
 
+strawberry_model = "o1-mini"
+
 #################
 # CHECKING PROMPT
 checking_prompt = """You are an expert at verifying whether summaries are consistent with their source text. Your task is to check four summaries against the given input source text and rank them from best to worst based on their accuracy, completeness, and consistency with the input source text.
@@ -78,11 +80,11 @@ with st.expander("Click to read documentation"):
   st.write("- Generate a summary or analysis of input") 
   st.write("- GPT-4 Omni - up to 128,000 tokens") 
   st.write("- Claude 3.5 Sonnet - up to 200,000 tokens")
-  st.write("- O1 Preview - up to 128,000 tokens (EXPERIMENTAL)")
+  st.write("- Strawberry - up to 128,000 tokens (EXPERIMENTAL)")
   st.write("- :red[**Answers may not be suitable or accurate**]")
   st.write("- :blue[**Try reloading webpage to troubleshoot**]")
 
-Model_Option = st.selectbox("DISABLED: What Large Language Model do I use?", ('GPT-4 Omni', 'Claude 3.5 Sonnet', 'Gemini 1.5 Pro', 'o1-preview'))
+Model_Option = st.selectbox("DISABLED: What Large Language Model do I use?", ('GPT-4 Omni', 'Claude 3.5 Sonnet', 'Gemini 1.5 Pro', 'Strawberry'))
 
 Option_Input = st.selectbox("ENABLED: How will I receive your input?", ('Upload a pdf','Enter free text'))
 
@@ -182,20 +184,20 @@ if raw_text.strip() != "":
         st_copy_to_clipboard(output_text3)
       st.snow()
       
-      # O1 Preview
+      # Strawberry
       start = time.time()
-      response = client.chat.completions.create(model="o1-preview", 
+      response = client.chat.completions.create(model=strawberry_model, 
                                                 messages=[{"role": "user", "content": input}])
       output_text4 = response.choices[0].message.content      
       end = time.time()
-      with st.expander("O1 Preview"):
+      with st.expander("Strawberry"):
         st.write(output_text4)
         st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
         st_copy_to_clipboard(output_text4)
       st.snow()
 
       # Putting it all together
-      # total_output_text = "**Claude 3.5 Sonnet**\n\n" + output_text1 + "\n\n**Gemini 1.5 Pro**\n\n" + output_text2 + "\n\n**GPT-4 Omni**\n\n" + output_text3 + "\n\n**O1 Preview**\n\n" + output_text4
+      # total_output_text = "**Claude 3.5 Sonnet**\n\n" + output_text1 + "\n\n**Gemini 1.5 Pro**\n\n" + output_text2 + "\n\n**GPT-4 Omni**\n\n" + output_text3 + "\n\n**Strawberry**\n\n" + output_text4
       # st_copy_to_clipboard(total_output_text)
 
       output_text1 = "  \n\n<summary_1>" + output_text1 + "</summary_1>  \n\n"
