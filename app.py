@@ -198,7 +198,7 @@ if raw_text.strip() != "":
       
       # Gemini 1.5 Pro
       start = time.time()
-      gemini = genai.GenerativeModel("gemini-1.5-pro-exp-0827")
+      gemini = genai.GenerativeModel("gemini-1.5-pro-002")
       response = gemini.generate_content(input, safety_settings = safety_settings, generation_config = generation_config)
       output_text2 = response.text
       end = time.time()
